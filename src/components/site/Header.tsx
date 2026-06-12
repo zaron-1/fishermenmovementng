@@ -4,7 +4,8 @@ import { Menu, X, Shield } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { NAV_LINKS, SITE } from "@/lib/site";
 import { supabase } from "@/integrations/supabase/client";
-import logo from "@/assets/logo.png";
+import logoAsset from "@/assets/fishermen-logo.png.asset.json";
+const logo = logoAsset.url;
 
 export function Header() {
   const [open, setOpen] = useState(false);
