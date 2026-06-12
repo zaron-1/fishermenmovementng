@@ -1,7 +1,8 @@
 import { Link } from "@tanstack/react-router";
 import { Mail, MapPin, Phone, Facebook, Twitter, Instagram, Linkedin } from "lucide-react";
 import { SITE, NAV_LINKS } from "@/lib/site";
-import logo from "@/assets/logo.png";
+import logoAsset from "@/assets/fishermen-logo.png.asset.json";
+const logo = logoAsset.url;
 
 export function Footer() {
   return (
@@ -11,7 +12,7 @@ export function Footer() {
         <div className="grid gap-12 lg:grid-cols-4">
           <div className="lg:col-span-2">
             <div className="flex items-center gap-3">
-              <img src={logo} alt="" className="h-10 w-10 object-contain brightness-200" width={40} height={40} />
+              <img src={logo} alt="" className="h-10 w-10 object-contain" width={40} height={40} />
               <div>
                 <div className="font-display text-lg font-bold">{SITE.name}</div>
                 <div className="text-xs uppercase tracking-widest text-background/60">{SITE.tagline}</div>
