@@ -1,118 +1,405 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { FileText, Target, AlertTriangle, MapPin, Goal, Users, Heart, Coins, CalendarClock, BookOpen } from "lucide-react";
+import {
+  FileText, BookOpen, Target, AlertTriangle, MapPin, Goal, Users, GraduationCap,
+  CalendarClock, Wrench, ListChecks, TrendingUp, FlaskConical, ShieldAlert, Coins,
+  Wallet, CheckCircle2, Lock, Mail
+} from "lucide-react";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
-      { title: "About the Project — Fishermen Movement" },
-      { name: "description", content: "Full project proposal: background, justification, goals, beneficiaries, timeline and curriculum for the Fishermen Movement Cyber Safety Campaign." },
-      { property: "og:title", content: "About — Fishermen Movement Cyber Safety Campaign" },
+      { title: "Project Proposal — Fishermen Movement Cyber Safety Campaign" },
+      { name: "description", content: "Full project proposal: Cyber Safety, Anti-Phishing and Digital Responsibility Awareness Campaign for secondary schools in Aba, Abia State. Pilot phase: late June 2026." },
+      { property: "og:title", content: "Project Proposal — Fishermen Movement" },
+      { property: "og:description", content: "Cyber Safety, Anti-Phishing and Digital Responsibility Awareness Campaign for secondary schools in Aba, Abia State." },
     ],
   }),
   component: About,
 });
 
-const sections = [
+type Section = {
+  Icon: typeof FileText;
+  title: string;
+  body?: string;
+  bullets?: string[];
+  groups?: { heading: string; items: string[] }[];
+};
+
+const sections: Section[] = [
   {
     Icon: FileText,
     title: "Executive Summary",
-    body: "The Fishermen Movement Cyber Safety, Anti-Phishing and Digital Responsibility Awareness Campaign is a community-driven initiative based in Aba, Abia State, dedicated to equipping Nigerian secondary school students with the knowledge and habits required to navigate today's digital world safely. Through hands-on classroom workshops, peer mentorship, and partnerships with schools and technology professionals, the programme aims to reach 4,800–9,600 students annually across Abia State.",
+    body:
+      "The Fishermen Movement proposes the implementation of a Cyber Safety, Anti-Phishing and Digital Responsibility Awareness Campaign for Secondary School Students in Aba, Abia State.\n\n" +
+      "The project seeks to address the growing exposure of young people to cyber threats such as phishing attacks, online scams, cyberbullying, identity theft, misinformation, social engineering attacks, sextortion, and other forms of online exploitation.\n\n" +
+      "With increasing smartphone ownership and internet access among Nigerian youths, many students are now active internet users without adequate knowledge of online safety practices. As a result, they are vulnerable to becoming victims of cybercrime and online manipulation.\n\n" +
+      "The project will provide practical cybersecurity awareness education to Senior Secondary School students (SS1–SS3) through structured sensitization sessions conducted directly within schools.\n\n" +
+      "The pilot phase will commence in late June 2026 and target one secondary school per week, reaching approximately four schools during the pilot period.",
   },
   {
     Icon: BookOpen,
     title: "Project Background",
-    body: "Nigerian secondary school students are increasingly exposed to digital tools — smartphones, social media, messaging apps and online learning — without the foundational training to use them safely. Phishing, online scams, identity theft, and exposure to harmful content are growing concerns. The Fishermen Movement was founded to bridge this gap with structured, age-appropriate cybersecurity education.",
+    body:
+      "Technology has become an integral part of everyday life for young people. Students now use smartphones, social media platforms, messaging applications, online gaming platforms, and digital learning resources daily.\n\n" +
+      "While these technologies provide educational and economic opportunities, they also expose young people to increasing cyber risks. In recent years, cybercriminals have shifted focus toward younger internet users because they are often less aware of online threats and more likely to trust suspicious messages, links, and offers.\n\n" +
+      "Students frequently encounter:",
+    bullets: [
+      "Phishing messages",
+      "Fake scholarship offers",
+      "Social media scams",
+      "Identity theft",
+      "Online fraud",
+      "Cyberbullying",
+      "Sextortion",
+      "Misinformation and fake news",
+      "Recruitment into cybercrime activities",
+    ],
   },
   {
     Icon: Target,
     title: "Project Justification",
-    body: "While Nigeria has produced world-class technology talent, cyber safety education at the secondary school level remains nearly absent from mainstream curricula. Without early intervention, students become victims or unwitting participants in cybercrime. Aba — a fast-growing commercial hub — is the ideal launchpad for a model that can scale across Nigeria.",
-  },
-  {
-    Icon: AlertTriangle,
-    title: "Problem Statement",
-    body: "Students lack awareness of basic online safety practices, can't recognise phishing attempts, frequently overshare personal information, and have limited understanding of the legal and ethical consequences of cybercrime. Schools rarely have qualified personnel to fill this gap.",
+    body:
+      "The need for this project is supported by current realities in Nigeria. Nigeria has one of Africa's largest internet populations, with young people forming a significant percentage of active users.\n\n" +
+      "Studies conducted among Nigerian secondary school students found that adolescents are regular internet users and are exposed to significant cyber risks, prompting researchers to recommend intentional internet safety education within schools.\n\n" +
+      "Research involving Nigerian adolescents reported frequent encounters with online scams, inappropriate online content, and digital safety threats. Researchers concluded that awareness and education are necessary to protect young people online.\n\n" +
+      "Recent studies have also shown increasing levels of problematic internet use among Nigerian adolescents, highlighting the need for digital literacy and responsible online behavior interventions.\n\n" +
+      "Furthermore, cybercrime has become a major national concern. Young people are frequently targeted by online fraudsters and, in some cases, recruited into cybercrime activities due to ignorance, peer influence, and lack of awareness regarding the consequences.",
   },
   {
     Icon: MapPin,
-    title: "Why Aba Needs This Initiative",
-    body: "Aba has a young, mobile-first population and a thriving commercial culture, which together create high exposure to cyber-enabled fraud. Local secondary schools have expressed strong interest in cyber safety education but lack the curriculum and trainers. Aba's central location in southeastern Nigeria makes it an effective pilot site.",
-  },
-  {
-    Icon: AlertTriangle,
-    title: "Current Cybersecurity Challenges Facing Students",
-    body: "Phishing emails and fake account login pages, social engineering through WhatsApp and Instagram, romance and investment scams, malware-laden cracked software, account takeover, exposure to predatory content, and pressure to participate in low-level cybercrime ('Yahoo Yahoo').",
+    title: "Why Aba?",
+    body:
+      "Aba is one of Nigeria's most active commercial cities with widespread access to smartphones, internet services, social media platforms, and digital technologies.\n\n" +
+      "Many students in Aba own smartphones or have regular access to internet-enabled devices. However, there are limited structured school-based programmes dedicated specifically to cybersecurity awareness, phishing prevention, digital responsibility, and online safety. This project seeks to fill that gap.",
   },
   {
     Icon: Goal,
     title: "Project Goal",
-    body: "To build a digitally responsible generation of Nigerian students by delivering structured, recurring cyber safety training to secondary schools across Aba and the wider Abia State.",
+    body:
+      "To increase cybersecurity awareness and digital responsibility among at least 200–400 secondary school students across four selected secondary schools in Aba, Abia State, through structured 30–45 minute cyber safety and anti-phishing sensitization sessions conducted within one month of implementation, thereby improving students' ability to identify common cyber threats, practice safer online behavior, and make responsible digital decisions.",
   },
   {
-    Icon: Target,
+    Icon: ListChecks,
     title: "Project Objectives",
-    body: "1) Deliver weekly cyber safety workshops in at least one secondary school per week. 2) Train 4,800–9,600 students annually. 3) Build a volunteer corps of cybersecurity, IT, and education professionals. 4) Establish school-based 'Cyber Safety Clubs' for peer mentorship. 5) Produce open educational resources adapted to the Nigerian context.",
+    body: "The project aims to:",
+    bullets: [
+      "Increase awareness of cyber threats among students.",
+      "Educate students on online safety best practices.",
+      "Teach students how to identify and avoid phishing attacks.",
+      "Promote responsible social media behavior.",
+      "Educate students on digital footprints and online reputation.",
+      "Discourage youth involvement in cybercrime.",
+      "Encourage ethical and responsible technology use.",
+      "Build a culture of digital responsibility among young people.",
+    ],
   },
   {
     Icon: Users,
     title: "Target Beneficiaries",
-    body: "Secondary school students aged 12–18 in Aba and Abia State; teachers and school administrators; parents and guardians; and the broader Abia community through awareness materials.",
+    body:
+      "Primary Target Group: Senior Secondary School Students (SS1–SS3).\n\n" +
+      "Rationale: Students within this age group are among the most active internet users and are more likely to encounter cyber threats through social media, email, messaging platforms, and online communities.",
   },
   {
-    Icon: Heart,
-    title: "Expected Impact",
-    body: "Measurable reduction in phishing victimisation, increased reporting of suspicious activity, formation of student-led cyber safety clubs, and a documented curriculum that can be adopted by other Nigerian states.",
+    Icon: BookOpen,
+    title: "Project Curriculum",
+    groups: [
+      {
+        heading: "Module 1 — Online Safety and Digital Footprint",
+        items: [
+          "Personal information protection",
+          "Password security",
+          "Privacy settings",
+          "Safe social media use",
+          "Responsible online behavior",
+          "Building a positive digital reputation",
+        ],
+      },
+      {
+        heading: "Module 2 — Cybercrime Risks and Prevention",
+        items: [
+          "Common cybercrime techniques",
+          "Online scams",
+          "Internet fraud awareness",
+          "Consequences of cybercrime",
+          "Ethical technology use",
+        ],
+      },
+      {
+        heading: "Module 3 — Phishing Awareness and Prevention",
+        items: [
+          "What phishing is",
+          "Types of phishing attacks",
+          "Email phishing",
+          "SMS phishing",
+          "Social media scams",
+          "Fake websites",
+          "Suspicious links",
+          "Reporting cyber incidents",
+        ],
+      },
+    ],
+  },
+  {
+    Icon: CalendarClock,
+    title: "Project Implementation Plan",
+    body:
+      "Pilot Phase: Late June – July 2026.\n\n" +
+      "Frequency: One school per week.\n" +
+      "Session duration: 30–45 minutes.\n" +
+      "Coverage: 4 schools during the pilot phase.\n" +
+      "Estimated reach: 50–100 students per school (200–400 students during pilot phase).\n\n" +
+      "Annual Projection: Subject to funding and programme expansion, additional schools across Aba and other communities within Abia State may be reached.",
+  },
+  {
+    Icon: Wrench,
+    title: "Programme Inputs",
+    groups: [
+      {
+        heading: "Human Resources",
+        items: [
+          "Project Coordinator",
+          "Volunteer Facilitators",
+          "Cybersecurity Professionals",
+          "ICT Specialists",
+          "School Liaison Officers",
+          "Administrative Support Team",
+        ],
+      },
+      {
+        heading: "Equipment and Materials",
+        items: [
+          "Laptop Computers",
+          "Multimedia Projector",
+          "Television Screens",
+          "Public Address System",
+          "Presentation Slides",
+          "Educational Flyers",
+          "Attendance Registers",
+          "Internet Connectivity",
+        ],
+      },
+    ],
+  },
+  {
+    Icon: CheckCircle2,
+    title: "Programme Outputs (Pilot)",
+    bullets: [
+      "Four schools sensitized",
+      "Four awareness sessions conducted",
+      "200–400 students trained",
+      "Educational materials distributed",
+      "Improved awareness of cyber threats and online safety practices",
+    ],
+  },
+  {
+    Icon: TrendingUp,
+    title: "Expected Outcomes",
+    groups: [
+      {
+        heading: "Short-Term Outcomes",
+        items: [
+          "Increased cybersecurity awareness",
+          "Better understanding of phishing threats",
+          "Improved online behavior",
+          "Safer social media practices",
+        ],
+      },
+      {
+        heading: "Long-Term Outcomes",
+        items: [
+          "Reduced susceptibility to online scams",
+          "Reduction in youth participation in cybercrime",
+          "Improved digital literacy",
+          "Development of responsible digital citizens",
+          "Safer online communities",
+        ],
+      },
+    ],
+  },
+  {
+    Icon: FlaskConical,
+    title: "Pilot Programme",
+    body: "The pilot phase will serve as a proof-of-concept for future expansion. Objectives of the pilot:",
+    bullets: [
+      "Test programme effectiveness",
+      "Measure student engagement",
+      "Gather stakeholder feedback",
+      "Improve delivery methods",
+      "Develop a scalable model for wider implementation",
+    ],
+  },
+  {
+    Icon: ShieldAlert,
+    title: "Risks and Mitigation",
+    groups: [
+      { heading: "Limited Funding", items: ["Partnerships, sponsorships, donations, and volunteer support."] },
+      { heading: "School Scheduling Challenges", items: ["Early engagement with school administrators."] },
+      { heading: "Equipment Failure", items: ["Backup equipment and printed materials."] },
+      { heading: "Low Participation", items: ["Stakeholder engagement and awareness campaigns."] },
+    ],
   },
   {
     Icon: Coins,
     title: "Funding Strategy",
-    body: "A diversified funding mix: corporate sponsorships across Platinum, Gold, Silver, Bronze and Community tiers; partnerships with government agencies and educational institutions; individual donations through Paystack and Flutterwave; and in-kind support (training facilities, devices, logistics).",
+    groups: [
+      {
+        heading: "Current Sources",
+        items: [
+          "Personal contributions from members of the Fishermen Movement",
+          "Volunteer support",
+        ],
+      },
+      {
+        heading: "Proposed Sources",
+        items: [
+          "Government agencies",
+          "Educational institutions",
+          "NGOs",
+          "Charitable organizations",
+          "Corporate sponsors",
+          "Community leaders",
+          "Philanthropists",
+          "Technology organizations",
+          "RAD5 Tech Hub",
+        ],
+      },
+    ],
+    body: "Formal partnership requests, sponsorship letters, and funding proposals will be submitted immediately following approval of the project framework.",
   },
   {
-    Icon: CalendarClock,
-    title: "Pilot Programme",
-    body: "A 12-week pilot in 12 secondary schools across Aba, refining curriculum delivery, measuring learning outcomes, and gathering feedback before expanding to the rest of Abia State.",
+    Icon: Wallet,
+    title: "Preliminary Pilot Budget (1 Month)",
+    groups: [
+      {
+        heading: "Line Items",
+        items: [
+          "Transportation to Schools — ₦60,000",
+          "Educational Materials, Flyers, Handouts, Banners, Publicity Materials, Stationery and Documentation — ₦70,000",
+          "Projector Rental / Maintenance — ₦30,000",
+          "Internet and Communication — ₦15,000",
+          "Volunteer Logistics and Refreshments — ₦50,000",
+          "Contingency — ₦25,000",
+          "TOTAL ESTIMATED BUDGET — ₦250,000",
+        ],
+      },
+      {
+        heading: "Budget Notes",
+        items: [
+          "Existing equipment owned by volunteers may reduce costs significantly.",
+          "School facilities will be utilized, eliminating venue expenses.",
+          "Budget estimates are based on four schools during the one-month pilot phase.",
+          "Additional funding will enable expansion to more schools and communities.",
+        ],
+      },
+    ],
   },
   {
-    Icon: CalendarClock,
-    title: "Implementation Timeline",
-    body: "Year 1 — Pilot in Aba (48 schools). Year 2 — Expand across Abia State and begin certifying student leaders. Year 3 — Replicate the model in 2 additional states.",
+    Icon: AlertTriangle,
+    title: "Conclusion",
+    body:
+      "Every successful phishing attack, online scam, cyberbullying incident, or recruitment into cybercrime begins with a lack of awareness.\n\n" +
+      "This project seeks to address the problem at its root by educating young people before they become victims or participants.\n\n" +
+      "By investing in this initiative, partners will contribute to raising a generation of digitally responsible students who can safely and productively participate in the digital economy.",
   },
-  {
-    Icon: BookOpen,
-    title: "Curriculum",
-    body: "Three modules delivered across short, interactive sessions: Online Safety & Digital Footprint; Cybercrime Risks & Prevention; Phishing Awareness & Prevention. Each module includes live demonstrations, real Nigerian case studies, and group exercises.",
-  },
+];
+
+const meta = [
+  { Icon: CalendarClock, label: "Proposed Start", value: "Late June 2026" },
+  { Icon: MapPin, label: "Location", value: "Aba, Abia State, Nigeria" },
+  { Icon: GraduationCap, label: "Pilot Duration", value: "1 Month — 4 Schools" },
+  { Icon: Users, label: "Pilot Reach", value: "200–400 Students (SS1–SS3)" },
 ];
 
 function About() {
   return (
     <div>
-      <section className="relative isolate overflow-hidden gradient-hero py-20 text-white">
+      <section className="relative isolate overflow-hidden gradient-hero py-24 text-white">
         <div className="absolute inset-0 grid-pattern opacity-40" />
-        <div className="relative mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
+        <div className="relative mx-auto max-w-5xl px-4 text-center sm:px-6 lg:px-8">
           <div className="mb-3 text-xs font-semibold uppercase tracking-widest text-accent">Project Proposal</div>
-          <h1 className="font-display text-4xl font-bold leading-tight sm:text-5xl lg:text-6xl">About the Fishermen Movement</h1>
-          <p className="mt-6 text-lg text-white/85">
-            A comprehensive cyber safety, anti-phishing and digital responsibility programme for secondary
-            school students in Aba and Abia State.
+          <h1 className="font-display text-4xl font-bold leading-tight sm:text-5xl lg:text-6xl">
+            Cyber Safety, Anti-Phishing & Digital Responsibility
+          </h1>
+          <p className="mt-4 text-base font-medium uppercase tracking-widest text-white/80">
+            Awareness Campaign for Secondary Schools in Aba, Abia State
           </p>
+          <p className="mx-auto mt-6 max-w-3xl text-lg text-white/85">
+            Implementing Organization: <strong>Fishermen Movement</strong>. A pilot programme reaching SS1–SS3
+            students with practical cybersecurity education, beginning late June 2026.
+          </p>
+
+          <div className="mx-auto mt-10 grid max-w-3xl grid-cols-2 gap-3 sm:grid-cols-4">
+            {meta.map((m) => (
+              <div key={m.label} className="rounded-2xl border border-white/15 bg-white/10 p-4 text-left backdrop-blur-md">
+                <m.Icon className="mb-2 h-5 w-5 text-accent" />
+                <div className="text-[10px] uppercase tracking-widest text-white/60">{m.label}</div>
+                <div className="mt-0.5 text-sm font-semibold">{m.value}</div>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
       <section className="mx-auto max-w-5xl px-4 py-20 sm:px-6 lg:px-8">
-        <div className="space-y-12">
+        <div className="space-y-14">
           {sections.map((s, i) => (
-            <div key={s.title} className="grid gap-6 md:grid-cols-[auto_1fr] animate-fade-up" style={{ animationDelay: `${i * 60}ms` }}>
+            <article
+              key={s.title}
+              className="grid gap-6 md:grid-cols-[auto_1fr] animate-fade-up"
+              style={{ animationDelay: `${i * 50}ms` }}
+            >
               <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl gradient-primary text-primary-foreground shadow-glow">
                 <s.Icon className="h-6 w-6" />
               </div>
               <div className="min-w-0">
                 <h2 className="font-display text-2xl font-bold sm:text-3xl">{s.title}</h2>
-                <p className="mt-3 whitespace-pre-line leading-relaxed text-muted-foreground">{s.body}</p>
+                {s.body && (
+                  <p className="mt-3 whitespace-pre-line leading-relaxed text-muted-foreground">{s.body}</p>
+                )}
+                {s.bullets && (
+                  <ul className="mt-4 grid gap-2 sm:grid-cols-2">
+                    {s.bullets.map((b) => (
+                      <li key={b} className="flex items-start gap-2 text-sm text-foreground/80">
+                        <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
+                        <span>{b}</span>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+                {s.groups && (
+                  <div className="mt-5 grid gap-4 md:grid-cols-2">
+                    {s.groups.map((g) => (
+                      <div key={g.heading} className="rounded-2xl border border-border bg-card p-5 shadow-card">
+                        <div className="font-display text-base font-bold">{g.heading}</div>
+                        <ul className="mt-3 space-y-1.5">
+                          {g.items.map((it) => (
+                            <li key={it} className="flex items-start gap-2 text-sm text-muted-foreground">
+                              <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
+                              <span>{it}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    ))}
+                  </div>
+                )}
               </div>
-            </div>
+            </article>
           ))}
+        </div>
+
+        <div className="mt-20 rounded-3xl gradient-hero p-8 text-center text-white shadow-elegant sm:p-12">
+          <Lock className="mx-auto mb-3 h-7 w-7 text-accent" />
+          <h3 className="font-display text-2xl font-bold sm:text-3xl">Partner with the Fishermen Movement</h3>
+          <p className="mx-auto mt-3 max-w-2xl text-white/85">
+            Sponsorship, donations, equipment, or volunteer hours — every contribution helps protect a
+            Nigerian student from cybercrime.
+          </p>
+          <div className="mt-6 inline-flex items-center gap-2 rounded-full bg-white/10 px-5 py-2 text-sm backdrop-blur-md">
+            <Mail className="h-4 w-4 text-accent" />
+            <span>ikohslib@gmail.com</span>
+          </div>
         </div>
       </section>
     </div>
