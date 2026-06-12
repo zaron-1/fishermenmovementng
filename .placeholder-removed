@@ -1,0 +1,7 @@
+import { createFileRoute } from "@tanstack/react-router";
+
+// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
+export const Route = createFileRoute("/")({
+  head: () => ({ meta: [{ title: "Home" }] }),
+  component: () => null,
+});
