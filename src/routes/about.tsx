@@ -269,27 +269,28 @@ const sections: Section[] = [
   },
   {
     Icon: Wallet,
-    title: "Preliminary Pilot Budget (1 Month)",
+    title: "Revised Pilot Project Budget (1 Month)",
     groups: [
       {
         heading: "Line Items",
         items: [
-          "Transportation to Schools — ₦60,000",
-          "Educational Materials, Flyers, Handouts, Banners, Publicity Materials, Stationery and Documentation — ₦70,000",
+          "Educational Materials, Flyers, Handouts, Banners, Publicity Materials, Stationery and Documentation — ₦100,000",
           "Projector Rental / Maintenance — ₦30,000",
+          "Transportation to Schools — ₦80,000",
           "Internet and Communication — ₦15,000",
           "Volunteer Logistics and Refreshments — ₦50,000",
-          "Contingency — ₦25,000",
-          "TOTAL ESTIMATED BUDGET — ₦250,000",
+          "Contingency — ₦30,000",
+          "TOTAL ESTIMATED BUDGET — ₦305,000",
         ],
       },
       {
         heading: "Budget Notes",
         items: [
-          "Existing equipment owned by volunteers may reduce costs significantly.",
-          "School facilities will be utilized, eliminating venue expenses.",
-          "Budget estimates are based on four schools during the one-month pilot phase.",
-          "Additional funding will enable expansion to more schools and communities.",
+          "The project will leverage volunteer support and donated resources wherever possible.",
+          "Existing equipment owned by volunteers and partners will significantly reduce implementation costs.",
+          "School facilities will be utilized for programme delivery, eliminating venue expenses.",
+          "Additional sponsorship and partnerships will allow expansion beyond the pilot phase.",
+          "Budget figures may be reviewed periodically based on project growth and stakeholder support.",
         ],
       },
     ],

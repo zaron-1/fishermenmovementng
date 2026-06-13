@@ -1,37 +1,29 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { toast } from "sonner";
 import { Heart, CreditCard, Building, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Progress } from "@/components/ui/progress";
 import { supabase } from "@/integrations/supabase/client";
+import { FundingProgress } from "@/components/site/FundingProgress";
 
 export const Route = createFileRoute("/donate")({
   head: () => ({
     meta: [
       { title: "Donate — Fishermen Movement" },
-      { name: "description", content: "Donate via Paystack, Flutterwave or bank transfer. Help us reach more Nigerian secondary school students." },
+      { name: "description", content: "Donate via Paystack, Flutterwave or bank transfer. Help us reach the ₦305,000 pilot funding goal." },
     ],
   }),
   component: Donate,
 });
 
-const goal = 10_000_000;
-const presets = [5000, 10000, 25000, 50000, 100000];
+const presets = [2000, 5000, 10000, 25000, 50000];
 
 function Donate() {
-  const [amount, setAmount] = useState(10000);
-  const [raised, setRaised] = useState(0);
+  const [amount, setAmount] = useState(5000);
   const [provider, setProvider] = useState<"paystack"|"flutterwave"|"bank">("paystack");
   const [loading, setLoading] = useState(false);
-
-  useEffect(() => {
-    supabase.rpc("get_public_stats").then(({ data }) => {
-      if (data) setRaised((data as { funds_raised: number }).funds_raised || 0);
-    });
-  }, []);
 
   async function onPledge(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -55,8 +47,6 @@ function Donate() {
     }
   }
 
-  const pct = Math.min(100, (raised / goal) * 100);
-
   return (
     <div>
       <section className="relative isolate overflow-hidden gradient-hero py-20 text-white">
@@ -64,20 +54,13 @@ function Donate() {
         <div className="relative mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
           <Heart className="mx-auto mb-3 h-10 w-10 text-accent" />
           <h1 className="font-display text-4xl font-bold sm:text-5xl lg:text-6xl">Donate</h1>
-          <p className="mt-4 text-lg text-white/85">Every ₦1,000 helps train another student. Every workshop matters.</p>
+          <p className="mt-4 text-lg text-white/85">Help us reach the ₦305,000 pilot goal. Every contribution funds a student session.</p>
         </div>
       </section>
 
       <section className="mx-auto max-w-5xl px-4 py-16 sm:px-6 lg:px-8">
-        <div className="mb-10 rounded-3xl border border-border bg-card p-8 shadow-card">
-          <div className="flex flex-wrap items-end justify-between gap-2">
-            <div>
-              <div className="text-xs uppercase tracking-widest text-muted-foreground">Annual goal</div>
-              <div className="font-display text-3xl font-bold">₦{raised.toLocaleString()} <span className="text-base text-muted-foreground">of ₦{goal.toLocaleString()}</span></div>
-            </div>
-            <div className="text-sm font-medium text-primary">{pct.toFixed(1)}% funded</div>
-          </div>
-          <Progress value={pct} className="mt-4 h-3" />
+        <div className="mb-10">
+          <FundingProgress />
         </div>
 
         <form onSubmit={onPledge} className="grid gap-6 lg:grid-cols-[1.2fr_1fr]">
@@ -130,10 +113,10 @@ function Donate() {
             <h3 className="font-display text-xl font-bold">Your donation funds</h3>
             <ul className="mt-5 space-y-4">
               {[
-                { amt: "₦5,000", impact: "1 student trained" },
-                { amt: "₦25,000", impact: "Workshop materials for a class" },
-                { amt: "₦100,000", impact: "Sponsor an entire school visit" },
-                { amt: "₦500,000", impact: "Full term in 4 schools" },
+                { amt: "₦2,000", impact: "Printed handouts for several students" },
+                { amt: "₦10,000", impact: "Internet & communication for a school visit" },
+                { amt: "₦30,000", impact: "Projector rental for the pilot phase" },
+                { amt: "₦80,000", impact: "Full transportation to all 4 pilot schools" },
               ].map(i => (
                 <li key={i.amt} className="flex items-start gap-3">
                   <div className="mt-1 h-2 w-2 shrink-0 rounded-full bg-white" />
