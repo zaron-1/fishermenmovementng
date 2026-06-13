@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { Users, HeartHandshake, Mail, Building2, BookOpen, ImageIcon } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { AnimatedCounter } from "@/components/site/AnimatedCounter";
+import { FundingProgress } from "@/components/site/FundingProgress";
 
 export const Route = createFileRoute("/_authenticated/admin")({
   beforeLoad: async ({ context }) => {
@@ -61,6 +62,10 @@ function Admin() {
     <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
       <div className="text-xs uppercase tracking-widest text-primary">Admin Panel</div>
       <h1 className="mt-1 font-display text-3xl font-bold sm:text-4xl">Project Overview</h1>
+
+      <div className="mt-8">
+        <FundingProgress />
+      </div>
 
       <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-6">
         {tiles.map((t) => (

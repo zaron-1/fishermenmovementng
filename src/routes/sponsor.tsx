@@ -8,6 +8,7 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { supabase } from "@/integrations/supabase/client";
+import { FundingProgress } from "@/components/site/FundingProgress";
 
 export const Route = createFileRoute("/sponsor")({
   head: () => ({
@@ -67,6 +68,10 @@ function SponsorPage() {
       </section>
 
       <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+        <div className="mb-10">
+          <FundingProgress />
+        </div>
+
         <div className="mb-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
           {tiers.map((t) => (
             <button

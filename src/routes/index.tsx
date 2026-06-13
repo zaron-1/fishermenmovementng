@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { Shield, Mail, ShieldAlert, Lock, Users, Building2, HeartHandshake, ArrowRight, GraduationCap, MapPin, Sparkles, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { AnimatedCounter } from "@/components/site/AnimatedCounter";
+import { FundingProgress } from "@/components/site/FundingProgress";
 import { supabase } from "@/integrations/supabase/client";
 import hero from "@/assets/hero-students.jpg";
 import ict from "@/assets/students-ict.jpg";
@@ -113,6 +114,10 @@ function Home() {
                 <div className="mt-1 text-xs uppercase tracking-wider text-muted-foreground">{s.label}</div>
               </div>
             ))}
+          </div>
+
+          <div className="mt-8">
+            <FundingProgress />
           </div>
         </div>
       </section>
