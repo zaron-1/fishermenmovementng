@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { ImageOff } from "lucide-react";
-import ict from "@/assets/students-ict.jpg";
+
 import training from "@/assets/training-session.jpg";
 import outreach from "@/assets/community-outreach.jpg";
 import hero from "@/assets/hero-students.jpg";
@@ -31,7 +31,7 @@ const fallback: Item[] = [
   { id: "a3", title: "ICT Lab outreach", caption: "Secondary school students at the workstations", category: "school_visits", media_url: ictLab.url },
   { id: "a4", title: "Cybersecurity training room", caption: "Threat-monitoring environment used during workshops", category: "workshops", media_url: cyberLab.url },
   { id: "a5", title: "Hands-on coding", caption: "Student practicing command-line tools", category: "training_sessions", media_url: studentCoding.url },
-  { id: "1", title: "ICT lab session", caption: "Students learning password security", category: "training_sessions", media_url: ict },
+  
   { id: "2", title: "Workshop in progress", caption: "Phishing demo with projector", category: "workshops", media_url: training },
   { id: "3", title: "Certificate day", caption: "Graduating cohort in Aba", category: "community_engagement", media_url: outreach },
   { id: "4", title: "Classroom session", caption: "Whiteboard cybersecurity diagrams", category: "school_visits", media_url: hero },
