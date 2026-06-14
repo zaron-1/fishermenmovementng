@@ -1,9 +1,11 @@
 import { createFileRoute, redirect } from "@tanstack/react-router";
-import { useEffect, useState } from "react";
-import { Users, HeartHandshake, Mail, Building2, BookOpen, ImageIcon } from "lucide-react";
+import { useCallback, useEffect, useState } from "react";
+import { Users, HeartHandshake, Mail, Building2, BookOpen, ImageIcon, Check, X } from "lucide-react";
+import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
 import { AnimatedCounter } from "@/components/site/AnimatedCounter";
 import { FundingProgress } from "@/components/site/FundingProgress";
+import { Button } from "@/components/ui/button";
 
 export const Route = createFileRoute("/_authenticated/admin")({
   beforeLoad: async ({ context }) => {
@@ -17,21 +19,18 @@ export const Route = createFileRoute("/_authenticated/admin")({
   component: Admin,
 });
 
-type Counts = {
-  volunteers: number;
-  sponsors: number;
-  partnerships: number;
-  contacts: number;
-  schools: number;
-  gallery: number;
-};
+type Counts = { volunteers: number; sponsors: number; partnerships: number; contacts: number; schools: number; gallery: number };
+type Row = Record<string, any>;
+type TableName = "volunteers" | "sponsors" | "partnership_requests";
 
 function Admin() {
   const [counts, setCounts] = useState<Counts>({ volunteers: 0, sponsors: 0, partnerships: 0, contacts: 0, schools: 0, gallery: 0 });
-  const [recentVols, setRecentVols] = useState<any[]>([]);
-  const [recentSponsors, setRecentSponsors] = useState<any[]>([]);
+  const [vols, setVols] = useState<Row[]>([]);
+  const [sponsors, setSponsors] = useState<Row[]>([]);
+  const [partnerships, setPartnerships] = useState<Row[]>([]);
+  const [busy, setBusy] = useState<string | null>(null);
 
-  useEffect(() => {
+  const refresh = useCallback(() => {
     Promise.all([
       supabase.from("volunteers").select("id", { count: "exact", head: true }),
       supabase.from("sponsors").select("id", { count: "exact", head: true }),
@@ -45,9 +44,21 @@ function Admin() {
         contacts: c.count || 0, schools: sc.count || 0, gallery: g.count || 0,
       });
     });
-    supabase.from("volunteers").select("id,full_name,email,occupation,status,created_at").order("created_at", { ascending: false }).limit(8).then(({ data }) => setRecentVols(data || []));
-    supabase.from("sponsors").select("id,organization_name,contact_person,category,amount,status,created_at").order("created_at", { ascending: false }).limit(8).then(({ data }) => setRecentSponsors(data || []));
+    supabase.from("volunteers").select("id,full_name,email,occupation,status,created_at").order("created_at", { ascending: false }).limit(10).then(({ data }) => setVols(data || []));
+    supabase.from("sponsors").select("id,organization_name,contact_person,category,amount,status,created_at").order("created_at", { ascending: false }).limit(10).then(({ data }) => setSponsors(data || []));
+    supabase.from("partnership_requests").select("id,organization_name,contact_person,partnership_type,status,created_at").order("created_at", { ascending: false }).limit(10).then(({ data }) => setPartnerships(data || []));
   }, []);
+
+  useEffect(() => { refresh(); }, [refresh]);
+
+  const updateStatus = async (table: TableName, id: string, status: "approved" | "rejected") => {
+    setBusy(id);
+    const { error } = await supabase.from(table).update({ status }).eq("id", id);
+    setBusy(null);
+    if (error) { toast.error(error.message); return; }
+    toast.success(`Marked ${status}`);
+    refresh();
+  };
 
   const tiles = [
     { Icon: Users, label: "Volunteers", value: counts.volunteers },
@@ -63,9 +74,7 @@ function Admin() {
       <div className="text-xs uppercase tracking-widest text-primary">Admin Panel</div>
       <h1 className="mt-1 font-display text-3xl font-bold sm:text-4xl">Project Overview</h1>
 
-      <div className="mt-8">
-        <FundingProgress />
-      </div>
+      <div className="mt-8"><FundingProgress /></div>
 
       <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-6">
         {tiles.map((t) => (
@@ -77,51 +86,109 @@ function Admin() {
         ))}
       </div>
 
-      <div className="mt-10 grid gap-6 lg:grid-cols-2">
-        <Section title="Recent volunteer applications">
-          <Table
-            head={["Name", "Email", "Role", "Status"]}
-            rows={recentVols.map((v) => [v.full_name, v.email, v.occupation || "—", v.status])}
-            empty="No applications yet"
-          />
-        </Section>
-        <Section title="Recent sponsors">
-          <Table
-            head={["Organization", "Contact", "Tier", "Amount", "Status"]}
-            rows={recentSponsors.map((s) => [s.organization_name, s.contact_person, s.category, s.amount ? `₦${Number(s.amount).toLocaleString()}` : "—", s.status])}
-            empty="No sponsors yet"
-          />
-        </Section>
+      <div className="mt-10 grid gap-6">
+        <ReviewSection
+          title="Volunteer applications"
+          head={["Name", "Email", "Role", "Status", "Actions"]}
+          rows={vols}
+          renderCells={(v) => [v.full_name, v.email, v.occupation || "—"]}
+          table="volunteers"
+          busy={busy}
+          onAction={updateStatus}
+        />
+        <ReviewSection
+          title="Sponsor submissions"
+          head={["Organization", "Contact", "Tier", "Amount", "Status", "Actions"]}
+          rows={sponsors}
+          renderCells={(s) => [s.organization_name, s.contact_person, s.category, s.amount ? `₦${Number(s.amount).toLocaleString()}` : "—"]}
+          table="sponsors"
+          busy={busy}
+          onAction={updateStatus}
+        />
+        <ReviewSection
+          title="Partnership requests"
+          head={["Organization", "Contact", "Type", "Status", "Actions"]}
+          rows={partnerships}
+          renderCells={(p) => [p.organization_name, p.contact_person, p.partnership_type || "—"]}
+          table="partnership_requests"
+          busy={busy}
+          onAction={updateStatus}
+        />
       </div>
     </div>
   );
 }
 
-function Section({ title, children }: { title: string; children: React.ReactNode }) {
+function StatusBadge({ status }: { status: string }) {
+  const tone =
+    status === "approved" || status === "active" ? "bg-emerald-500/10 text-emerald-600 ring-emerald-500/30"
+    : status === "rejected" ? "bg-rose-500/10 text-rose-600 ring-rose-500/30"
+    : "bg-amber-500/10 text-amber-600 ring-amber-500/30";
+  return <span className={`inline-flex rounded-full px-2 py-0.5 text-xs font-medium ring-1 ${tone}`}>{status}</span>;
+}
+
+function ReviewSection({
+  title, head, rows, renderCells, table, busy, onAction,
+}: {
+  title: string;
+  head: string[];
+  rows: Row[];
+  renderCells: (r: Row) => (string | number)[];
+  table: TableName;
+  busy: string | null;
+  onAction: (table: TableName, id: string, status: "approved" | "rejected") => void;
+}) {
   return (
     <div className="rounded-3xl border border-border bg-card p-6 shadow-card">
       <h2 className="font-display text-lg font-bold">{title}</h2>
-      <div className="mt-4">{children}</div>
-    </div>
-  );
-}
-
-function Table({ head, rows, empty }: { head: string[]; rows: (string | number)[][]; empty: string }) {
-  if (rows.length === 0) return <p className="py-10 text-center text-sm text-muted-foreground">{empty}</p>;
-  return (
-    <div className="overflow-x-auto">
-      <table className="w-full text-sm">
-        <thead><tr className="border-b border-border text-left text-xs uppercase tracking-wider text-muted-foreground">
-          {head.map((h) => <th key={h} className="py-2 pr-3 font-medium">{h}</th>)}
-        </tr></thead>
-        <tbody>
-          {rows.map((r, i) => (
-            <tr key={i} className="border-b border-border/50 last:border-0">
-              {r.map((c, j) => <td key={j} className="py-2.5 pr-3">{c}</td>)}
-            </tr>
-          ))}
-        </tbody>
-      </table>
+      <div className="mt-4">
+        {rows.length === 0 ? (
+          <p className="py-10 text-center text-sm text-muted-foreground">No submissions yet</p>
+        ) : (
+          <div className="overflow-x-auto">
+            <table className="w-full text-sm">
+              <thead>
+                <tr className="border-b border-border text-left text-xs uppercase tracking-wider text-muted-foreground">
+                  {head.map((h) => <th key={h} className="py-2 pr-3 font-medium">{h}</th>)}
+                </tr>
+              </thead>
+              <tbody>
+                {rows.map((r) => {
+                  const cells = renderCells(r);
+                  const isBusy = busy === r.id;
+                  const isPending = !["approved", "rejected", "active"].includes(r.status);
+                  return (
+                    <tr key={r.id} className="border-b border-border/50 last:border-0">
+                      {cells.map((c, j) => <td key={j} className="py-2.5 pr-3">{c}</td>)}
+                      <td className="py-2.5 pr-3"><StatusBadge status={r.status} /></td>
+                      <td className="py-2.5 pr-3">
+                        <div className="flex gap-2">
+                          <Button
+                            size="sm"
+                            variant="outline"
+                            disabled={isBusy || !isPending}
+                            onClick={() => onAction(table, r.id, "approved")}
+                          >
+                            <Check className="h-3.5 w-3.5" /> Approve
+                          </Button>
+                          <Button
+                            size="sm"
+                            variant="outline"
+                            disabled={isBusy || !isPending}
+                            onClick={() => onAction(table, r.id, "rejected")}
+                          >
+                            <X className="h-3.5 w-3.5" /> Reject
+                          </Button>
+                        </div>
+                      </td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          </div>
+        )}
+      </div>
     </div>
   );
 }
