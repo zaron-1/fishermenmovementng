@@ -26,6 +26,11 @@ export const Route = createFileRoute("/gallery")({
 type Item = { id: string; title: string | null; caption: string | null; category: string; media_url: string };
 
 const fallback: Item[] = [
+  { id: "a1", title: "Computer lab session", caption: "Students engaged in classroom ICT learning", category: "school_visits", media_url: onitshaLab.url },
+  { id: "a2", title: "Digital Literacy Club", caption: "Peer learning during a club meeting", category: "training_sessions", media_url: literacyClub.url },
+  { id: "a3", title: "ICT Lab outreach", caption: "Secondary school students at the workstations", category: "school_visits", media_url: ictLab.url },
+  { id: "a4", title: "Cybersecurity training room", caption: "Threat-monitoring environment used during workshops", category: "workshops", media_url: cyberLab.url },
+  { id: "a5", title: "Hands-on coding", caption: "Student practicing command-line tools", category: "training_sessions", media_url: studentCoding.url },
   { id: "1", title: "ICT lab session", caption: "Students learning password security", category: "training_sessions", media_url: ict },
   { id: "2", title: "Workshop in progress", caption: "Phishing demo with projector", category: "workshops", media_url: training },
   { id: "3", title: "Certificate day", caption: "Graduating cohort in Aba", category: "community_engagement", media_url: outreach },
