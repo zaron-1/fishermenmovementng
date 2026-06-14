@@ -6,6 +6,11 @@ import ict from "@/assets/students-ict.jpg";
 import training from "@/assets/training-session.jpg";
 import outreach from "@/assets/community-outreach.jpg";
 import hero from "@/assets/hero-students.jpg";
+import onitshaLab from "@/assets/gallery-onitsha-lab.jpg.asset.json";
+import literacyClub from "@/assets/gallery-literacy-club.jpg.asset.json";
+import ictLab from "@/assets/gallery-ict-lab.jpg.asset.json";
+import cyberLab from "@/assets/gallery-cyber-lab.jpg.asset.json";
+import studentCoding from "@/assets/gallery-student-coding.jpg.asset.json";
 
 export const Route = createFileRoute("/gallery")({
   head: () => ({
