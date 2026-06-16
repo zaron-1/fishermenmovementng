@@ -155,7 +155,7 @@ function Home() {
           </div>
 
           <div className="relative grid grid-cols-2 gap-4">
-            <img src={ict} alt="Students in ICT lab" className="aspect-[4/5] rounded-3xl object-cover shadow-elegant hover-lift" loading="lazy" width={1280} height={896} />
+            <img src={hero} alt="Students in ICT lab" className="aspect-[4/5] rounded-3xl object-cover shadow-elegant hover-lift" loading="lazy" width={1280} height={896} />
             <div className="space-y-4 pt-12">
               <img src={training} alt="Training session" className="aspect-square rounded-3xl object-cover shadow-card hover-lift" loading="lazy" width={1280} height={896} />
               <img src={outreach} alt="Community outreach" className="aspect-square rounded-3xl object-cover shadow-card hover-lift" loading="lazy" width={1280} height={896} />
