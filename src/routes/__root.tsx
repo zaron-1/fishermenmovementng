@@ -113,3 +113,7 @@ function RootComponent() {
     </QueryClientProvider>
   );
 }
+#lovable-badge {
+  display: none !important;
+}
+
