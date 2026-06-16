@@ -8,7 +8,7 @@ import outreach from "@/assets/community-outreach.jpg";
 import hero from "@/assets/hero-students.jpg";
 import onitshaLab from "@/assets/gallery-onitsha-lab.jpg.asset.json";
 import literacyClub from "@/assets/gallery-literacy-club.jpg.asset.json";
-import ictLab from "@/assets/gallery-ict-lab.jpg.asset.json";
+
 import cyberLab from "@/assets/gallery-cyber-lab.jpg.asset.json";
 import studentCoding from "@/assets/gallery-student-coding.jpg.asset.json";
 
@@ -28,7 +28,7 @@ type Item = { id: string; title: string | null; caption: string | null; category
 const fallback: Item[] = [
   { id: "a1", title: "Computer lab session", caption: "Students engaged in classroom ICT learning", category: "school_visits", media_url: onitshaLab.url },
   { id: "a2", title: "Digital Literacy Club", caption: "Peer learning during a club meeting", category: "training_sessions", media_url: literacyClub.url },
-  { id: "a3", title: "ICT Lab outreach", caption: "Secondary school students at the workstations", category: "school_visits", media_url: ictLab.url },
+  
   { id: "a4", title: "Cybersecurity training room", caption: "Threat-monitoring environment used during workshops", category: "workshops", media_url: cyberLab.url },
   { id: "a5", title: "Hands-on coding", caption: "Student practicing command-line tools", category: "training_sessions", media_url: studentCoding.url },
   
