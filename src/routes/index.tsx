@@ -6,7 +6,7 @@ import { AnimatedCounter } from "@/components/site/AnimatedCounter";
 import { FundingProgress } from "@/components/site/FundingProgress";
 import { supabase } from "@/integrations/supabase/client";
 import hero from "@/assets/hero-students.jpg";
-import ict from "@/assets/students-ict.jpg";
+
 import training from "@/assets/training-session.jpg";
 import outreach from "@/assets/community-outreach.jpg";
 
