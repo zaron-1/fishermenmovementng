@@ -86,7 +86,7 @@ function Contact() {
             {[
               { Icon: MapPin, label: "Office", value: SITE.address },
               { Icon: Mail, label: "Email", value: SITE.email },
-              { Icon: Phone, label: "Phone", value: SITE.phone },
+              { Icon: Phone, label: "Phone", value: `${SITE.phone} / ${SITE.phoneAlt}` },
             ].map((c) => (
               <div key={c.label} className="hover-lift rounded-2xl border border-border bg-card p-6 shadow-card">
                 <div className="mb-3 inline-flex h-10 w-10 items-center justify-center rounded-xl gradient-primary text-primary-foreground">

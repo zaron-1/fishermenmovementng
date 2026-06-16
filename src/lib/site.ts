@@ -2,8 +2,9 @@ export const SITE = {
   name: "Fishermen Movement",
   tagline: "Cyber Safety, Anti-Phishing & Digital Responsibility",
   location: "Aba, Abia State, Nigeria",
-  email: "ikohslib@gmail.com",
-  phone: "+234 800 000 0000",
+  email: "fishermenmovement@gmail.com",
+  phone: "+234 813 517 3180",
+  phoneAlt: "+234 807 577 9161",
   address: "Aba, Abia State, Nigeria",
   social: {
     twitter: "#",
