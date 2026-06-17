@@ -6,6 +6,10 @@ import { supabase } from "@/integrations/supabase/client";
 import { AnimatedCounter } from "@/components/site/AnimatedCounter";
 import { FundingProgress } from "@/components/site/FundingProgress";
 import { Button } from "@/components/ui/button";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { UserManagement } from "@/components/admin/UserManagement";
+import { ActivityLogs } from "@/components/admin/ActivityLogs";
+import { VisitorAnalytics } from "@/components/admin/VisitorAnalytics";
 
 export const Route = createFileRoute("/_authenticated/admin")({
   beforeLoad: async ({ context }) => {
@@ -14,6 +18,7 @@ export const Route = createFileRoute("/_authenticated/admin")({
     if (!roles.includes("admin") && !roles.includes("super_admin")) {
       throw redirect({ to: "/dashboard" });
     }
+    return { roles };
   },
   head: () => ({ meta: [{ title: "Admin — Fishermen Movement" }] }),
   component: Admin,
@@ -24,6 +29,9 @@ type Row = Record<string, any>;
 type TableName = "volunteers" | "sponsors" | "partnership_requests";
 
 function Admin() {
+  const { roles } = Route.useRouteContext();
+  const canManageRoles = roles.includes("super_admin");
+
   const [counts, setCounts] = useState<Counts>({ volunteers: 0, sponsors: 0, partnerships: 0, contacts: 0, schools: 0, gallery: 0 });
   const [vols, setVols] = useState<Row[]>([]);
   const [sponsors, setSponsors] = useState<Row[]>([]);
@@ -74,47 +82,70 @@ function Admin() {
       <div className="text-xs uppercase tracking-widest text-primary">Admin Panel</div>
       <h1 className="mt-1 font-display text-3xl font-bold sm:text-4xl">Project Overview</h1>
 
-      <div className="mt-8"><FundingProgress /></div>
+      <Tabs defaultValue="overview" className="mt-8">
+        <TabsList className="flex flex-wrap h-auto">
+          <TabsTrigger value="overview">Overview</TabsTrigger>
+          <TabsTrigger value="submissions">Submissions</TabsTrigger>
+          <TabsTrigger value="users">Users & Roles</TabsTrigger>
+          <TabsTrigger value="activity">Activity Logs</TabsTrigger>
+          <TabsTrigger value="visitors">Visitor Analytics</TabsTrigger>
+        </TabsList>
 
-      <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-6">
-        {tiles.map((t) => (
-          <div key={t.label} className="hover-lift rounded-2xl border border-border bg-card p-5 shadow-card">
-            <t.Icon className="mb-2 h-6 w-6 text-primary" />
-            <div className="font-display text-3xl font-bold"><AnimatedCounter value={t.value} /></div>
-            <div className="mt-1 text-xs uppercase tracking-wider text-muted-foreground">{t.label}</div>
+        <TabsContent value="overview" className="space-y-6 mt-6">
+          <FundingProgress />
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-6">
+            {tiles.map((t) => (
+              <div key={t.label} className="hover-lift rounded-2xl border border-border bg-card p-5 shadow-card">
+                <t.Icon className="mb-2 h-6 w-6 text-primary" />
+                <div className="font-display text-3xl font-bold"><AnimatedCounter value={t.value} /></div>
+                <div className="mt-1 text-xs uppercase tracking-wider text-muted-foreground">{t.label}</div>
+              </div>
+            ))}
           </div>
-        ))}
-      </div>
+        </TabsContent>
 
-      <div className="mt-10 grid gap-6">
-        <ReviewSection
-          title="Volunteer applications"
-          head={["Name", "Email", "Role", "Status", "Actions"]}
-          rows={vols}
-          renderCells={(v) => [v.full_name, v.email, v.occupation || "—"]}
-          table="volunteers"
-          busy={busy}
-          onAction={updateStatus}
-        />
-        <ReviewSection
-          title="Sponsor submissions"
-          head={["Organization", "Contact", "Tier", "Amount", "Status", "Actions"]}
-          rows={sponsors}
-          renderCells={(s) => [s.organization_name, s.contact_person, s.category, s.amount ? `₦${Number(s.amount).toLocaleString()}` : "—"]}
-          table="sponsors"
-          busy={busy}
-          onAction={updateStatus}
-        />
-        <ReviewSection
-          title="Partnership requests"
-          head={["Organization", "Contact", "Type", "Status", "Actions"]}
-          rows={partnerships}
-          renderCells={(p) => [p.organization_name, p.contact_person, p.partnership_type || "—"]}
-          table="partnership_requests"
-          busy={busy}
-          onAction={updateStatus}
-        />
-      </div>
+        <TabsContent value="submissions" className="mt-6 grid gap-6">
+          <ReviewSection
+            title="Volunteer applications"
+            head={["Name", "Email", "Role", "Status", "Actions"]}
+            rows={vols}
+            renderCells={(v) => [v.full_name, v.email, v.occupation || "—"]}
+            table="volunteers"
+            busy={busy}
+            onAction={updateStatus}
+          />
+          <ReviewSection
+            title="Sponsor submissions"
+            head={["Organization", "Contact", "Tier", "Amount", "Status", "Actions"]}
+            rows={sponsors}
+            renderCells={(s) => [s.organization_name, s.contact_person, s.category, s.amount ? `₦${Number(s.amount).toLocaleString()}` : "—"]}
+            table="sponsors"
+            busy={busy}
+            onAction={updateStatus}
+          />
+          <ReviewSection
+            title="Partnership requests"
+            head={["Organization", "Contact", "Type", "Status", "Actions"]}
+            rows={partnerships}
+            renderCells={(p) => [p.organization_name, p.contact_person, p.partnership_type || "—"]}
+            table="partnership_requests"
+            busy={busy}
+            onAction={updateStatus}
+          />
+        </TabsContent>
+
+        <TabsContent value="users" className="mt-6">
+          <UserManagement canManageRoles={canManageRoles} />
+        </TabsContent>
+
+        <TabsContent value="activity" className="mt-6">
+          <ActivityLogs />
+        </TabsContent>
+
+        <TabsContent value="visitors" className="mt-6">
+          <VisitorAnalytics />
+        </TabsContent>
+      </Tabs>
     </div>
   );
 }
