@@ -35,6 +35,6 @@ export async function logAuditEvent(action: string, details: Record<string, unkn
   await supabase.from("audit_logs").insert({
     actor_id: uid,
     action,
-    details,
+    details: details as never,
   });
 }
