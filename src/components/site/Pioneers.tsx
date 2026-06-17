@@ -6,8 +6,8 @@ import amarachi from "@/assets/pioneer-amarachi.png.asset.json";
 
 const PIONEERS = [
   {
-    name: "Jah'awill David",
-    bio: "Cyber-security pentesting student, RAD5 Tech Hub.",
+    name: "Jah'swill David",
+    bio: "Cyber-security pentesting student, RAD5 Tech Hub | Web Developer.",
     image: jahawill.url,
   },
   {
