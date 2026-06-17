@@ -97,9 +97,21 @@ function RootComponent() {
         router.invalidate();
         if (event !== "SIGNED_OUT") queryClient.invalidateQueries();
       }
+      if (event === "SIGNED_IN") logAuditEvent("login");
+      if (event === "SIGNED_OUT") logAuditEvent("logout");
+      if (event === "USER_UPDATED") logAuditEvent("profile_updated");
     });
     return () => sub.subscription.unsubscribe();
   }, [router, queryClient]);
+
+  useEffect(() => {
+    const unsub = router.subscribe("onResolved", ({ toLocation }) => {
+      recordPageView(toLocation.pathname);
+    });
+    // initial
+    recordPageView(window.location.pathname);
+    return unsub;
+  }, [router]);
 
   return (
     <QueryClientProvider client={queryClient}>
