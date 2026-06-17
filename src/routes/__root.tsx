@@ -15,6 +15,7 @@ import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
 import { Toaster } from "@/components/ui/sonner";
 import { supabase } from "@/integrations/supabase/client";
+import { recordPageView, logAuditEvent } from "@/lib/visitor-tracking";
 
 function NotFoundComponent() {
   return (
