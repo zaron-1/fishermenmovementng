@@ -6,6 +6,10 @@ import { supabase } from "@/integrations/supabase/client";
 import { AnimatedCounter } from "@/components/site/AnimatedCounter";
 import { FundingProgress } from "@/components/site/FundingProgress";
 import { Button } from "@/components/ui/button";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { UserManagement } from "@/components/admin/UserManagement";
+import { ActivityLogs } from "@/components/admin/ActivityLogs";
+import { VisitorAnalytics } from "@/components/admin/VisitorAnalytics";
 
 export const Route = createFileRoute("/_authenticated/admin")({
   beforeLoad: async ({ context }) => {
@@ -14,6 +18,7 @@ export const Route = createFileRoute("/_authenticated/admin")({
     if (!roles.includes("admin") && !roles.includes("super_admin")) {
       throw redirect({ to: "/dashboard" });
     }
+    return { roles };
   },
   head: () => ({ meta: [{ title: "Admin — Fishermen Movement" }] }),
   component: Admin,
