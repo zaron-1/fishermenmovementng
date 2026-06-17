@@ -201,6 +201,8 @@ function Home() {
         </div>
       </section>
 
+      <Pioneers />
+
       {/* CTA */}
       <section className="relative my-24 overflow-hidden">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
