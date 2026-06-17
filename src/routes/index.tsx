@@ -9,6 +9,7 @@ import hero from "@/assets/hero-students.jpg";
 
 import training from "@/assets/training-session.jpg";
 import outreach from "@/assets/community-outreach.jpg";
+import { Pioneers } from "@/components/site/Pioneers";
 
 export const Route = createFileRoute("/")({
   head: () => ({
