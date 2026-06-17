@@ -1,6 +1,8 @@
 import jahawill from "@/assets/pioneer-jahawill.png.asset.json";
 import ernest from "@/assets/pioneer-ernest.png.asset.json";
 import parsley from "@/assets/pioneer-parsley.png.asset.json";
+import kinsley from "@/assets/pioneer-kinsley.png.asset.json";
+import amarachi from "@/assets/pioneer-amarachi.png.asset.json";
 
 const PIONEERS = [
   {
@@ -17,6 +19,16 @@ const PIONEERS = [
     name: "Parsley Osimakwe",
     bio: "Cyber Security Intern at RAD5 Tech Hub | Mobile App Developer.",
     image: parsley.url,
+  },
+  {
+    name: "Kinsley Prince",
+    bio: "Cyber Security Intern at RAD5 Tech Hub.",
+    image: kinsley.url,
+  },
+  {
+    name: "Amarachi Wisdom",
+    bio: "Cyber Security student at RAD5 Tech Hub.",
+    image: amarachi.url,
   },
 ];
 
