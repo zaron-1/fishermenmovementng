@@ -32,6 +32,16 @@ const PIONEERS = [
     bio: "Cyber Security student at RAD5 Tech Hub.",
     image: amarachi.url,
   },
+  {
+    name: "Edward Chidubem",
+    bio: "Cyber-security student at RAD5 Tech Hub.",
+    image: edward.url,
+  },
+  {
+    name: "Solex Innocent",
+    bio: "Cyber-security pentesting student at RAD5 Tech Hub.",
+    image: solex.url,
+  },
 ];
 
 export function Pioneers() {
