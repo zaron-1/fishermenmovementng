@@ -59,11 +59,27 @@ const sections: Section[] = [
     Icon: Target,
     title: "Project Justification",
     body:
-      "The need for this project is supported by current realities in Nigeria. Nigeria has one of Africa's largest internet populations, with young people forming a significant percentage of active users.\n\n" +
-      "Studies conducted among Nigerian secondary school students found that adolescents are regular internet users and are exposed to significant cyber risks, prompting researchers to recommend intentional internet safety education within schools.\n\n" +
-      "Research involving Nigerian adolescents reported frequent encounters with online scams, inappropriate online content, and digital safety threats. Researchers concluded that awareness and education are necessary to protect young people online.\n\n" +
-      "Recent studies have also shown increasing levels of problematic internet use among Nigerian adolescents, highlighting the need for digital literacy and responsible online behavior interventions.\n\n" +
-      "Furthermore, cybercrime has become a major national concern. Young people are frequently targeted by online fraudsters and, in some cases, recruited into cybercrime activities due to ignorance, peer influence, and lack of awareness regarding the consequences.",
+      "The need for this project is strongly supported by current realities in Nigeria.\n\n" +
+      "Nigeria is one of Africa's largest digital markets, with approximately 142 million active internet subscriptions as of April 2025, according to data from the Nigerian Communications Commission (NCC). Internet penetration in Nigeria stood at about 45.4% of the population in 2025, demonstrating the rapid growth of digital access among young people and students.\n\n" +
+      "Research conducted by Adeola O. Opesade and Abiodun O. Adetona (2020) among 400 secondary school students in Ibadan, Nigeria, found that students were regular internet users and were exposed to considerable cyber risks, including cyberbullying and online sexual solicitation. The researchers concluded that internet safety education should be intentionally integrated into school programs to help students navigate online spaces safely.\n\n" +
+      "A more recent study by Munachimso B. Oguine, Ozioma C. Oguine, Karla Badillo-Urquiola, and Oluwasogo A. Okunade (2025) surveyed 409 secondary school adolescents in the Federal Capital Territory (FCT), Nigeria. The study found that adolescents who encountered online risks frequently reported exposure to online scams and inappropriate content. The researchers recommended increased awareness campaigns, digital safety education, stronger parental guidance, and improved online safety tools to protect young people.\n\n" +
+      "Concerns about unhealthy internet use are also increasing. A study published in Computers in Human Behavior (2022) by researchers examining 741 secondary school students in Lagos found evidence of problematic internet use among adolescents and linked it to negative outcomes such as aggression and dissatisfaction with family life.\n\n" +
+      "Further evidence comes from a 2025 study in Calabar Municipality, Nigeria, which reported that 62.6% of surveyed in-school adolescents exhibited problematic internet use (PIU). The researchers identified significant associations between problematic internet use and factors such as loneliness, low self-esteem, and other psychosocial challenges, highlighting the urgent need for digital literacy and responsible online behavior interventions.\n\n" +
+      "Cybercrime has also become a major national concern. The Chairman of the Economic and Financial Crimes Commission (EFCC), Ola Olukoyede, warned in 2023 about the growing involvement of young people in internet-related fraud and called for greater public enlightenment and preventive education to address the trend.\n\n" +
+      "Taken together, these findings demonstrate a clear need for structured digital literacy, cyber safety, and responsible internet-use programs targeted at Nigerian adolescents. Such interventions can help reduce exposure to online scams, cyberbullying, harmful content, problematic internet use, and recruitment into cybercrime activities while equipping young people with the knowledge and skills required for safe participation in the digital economy.",
+    groups: [
+      {
+        heading: "Key Statistics",
+        items: [
+          "Active internet subscriptions in Nigeria (2025): 141.5 million+ — NCC (2025)",
+          "Internet penetration rate (2025): 45.4% — Statista (2025)",
+          "Secondary school students surveyed in Ibadan cyber-risk study: 400 — Opesade & Adetona (2020)",
+          "Adolescents surveyed in FCT online safety study: 409 — Oguine et al. (2025)",
+          "Lagos adolescents surveyed on problematic internet use: 741 — Computers in Human Behavior (2022)",
+          "Problematic internet use among adolescents in Calabar: 62.6% — Calabar Municipality study (2025)",
+        ],
+      },
+    ],
   },
   {
     Icon: MapPin,
