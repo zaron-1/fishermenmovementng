@@ -110,6 +110,22 @@ function Admin() {
 
         <TabsContent value="submissions" className="mt-6 grid gap-6">
           <ReviewSection
+            title="Sponsorship & Partnership requests"
+            head={["Name", "Contact", "Type", "Support", "Organization", "Amount", "Status", "Actions"]}
+            rows={support}
+            renderCells={(r) => [
+              r.full_name,
+              `${r.email}${r.phone ? " · " + r.phone : ""}`,
+              r.request_type,
+              r.support_type,
+              r.organization_name || "—",
+              r.amount ? `₦${Number(r.amount).toLocaleString()}` : "—",
+            ]}
+            table="support_requests"
+            busy={busy}
+            onAction={updateStatus}
+          />
+          <ReviewSection
             title="Volunteer applications"
             head={["Name", "Email", "Role", "Status", "Actions"]}
             rows={vols}
