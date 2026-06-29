@@ -72,7 +72,7 @@ function Impact() {
           <div className="rounded-[calc(1.5rem-4px)] bg-card p-8 text-center">
             <div className="text-xs font-semibold uppercase tracking-widest text-primary">Estimated Annual Reach</div>
             <div className="mt-2 font-display text-5xl font-bold sm:text-6xl">
-              <AnimatedCounter value={4800} />–<AnimatedCounter value={9600} /> Students
+              <AnimatedCounter value={ANNUAL} /> Students
             </div>
             <p className="mt-2 text-muted-foreground">Reached every single year across Abia State secondary schools.</p>
           </div>
