@@ -5,7 +5,9 @@ import { Button } from "@/components/ui/button";
 import { NAV_LINKS, SITE } from "@/lib/site";
 import { supabase } from "@/integrations/supabase/client";
 import logoAsset from "@/assets/fishermen-logo.png.asset.json";
+import rad5LogoAsset from "@/assets/rad5-logo.png.asset.json";
 const logo = logoAsset.url;
+const rad5Logo = rad5LogoAsset.url;
 
 export function Header() {
   const [open, setOpen] = useState(false);
@@ -40,6 +42,10 @@ export function Header() {
           <div className="hidden min-w-0 sm:block">
             <div className="truncate font-display text-base font-bold leading-tight text-foreground">{SITE.name}</div>
             <div className="truncate text-[10px] uppercase tracking-widest text-muted-foreground">Cyber Safety Campaign</div>
+          </div>
+          <div className="ml-1 hidden items-center gap-1.5 border-l border-border/60 pl-2.5 sm:flex" aria-label="In partnership with RAD5 Tech Hub">
+            <span className="hidden text-[9px] font-medium uppercase tracking-widest text-muted-foreground md:inline">In partnership with</span>
+            <img src={rad5Logo} alt="RAD5 Tech Hub" className="h-7 w-auto object-contain" width={56} height={28} />
           </div>
         </Link>
 

@@ -83,10 +83,7 @@ function Home() {
                 <Link to="/volunteer"><Users className="mr-2 h-5 w-5" />Become a Volunteer</Link>
               </Button>
               <Button asChild size="lg" variant="outline" className="border-white/30 bg-white/10 text-white backdrop-blur-md hover:bg-white/20 hover:text-white">
-                <Link to="/sponsor"><HeartHandshake className="mr-2 h-5 w-5" />Become a Sponsor</Link>
-              </Button>
-              <Button asChild size="lg" variant="outline" className="border-white/30 bg-white/10 text-white backdrop-blur-md hover:bg-white/20 hover:text-white">
-                <Link to="/partner"><Building2 className="mr-2 h-5 w-5" />Partner With Us</Link>
+                <Link to="/sponsor"><HeartHandshake className="mr-2 h-5 w-5" />Sponsorship & Partnership</Link>
               </Button>
             </div>
           </div>
@@ -141,7 +138,7 @@ function Home() {
                 { Icon: Lock, title: "Online Safety", desc: "Privacy, passwords, digital footprint." },
                 { Icon: ShieldAlert, title: "Cybercrime Prevention", desc: "Scams, social engineering, ethics." },
                 { Icon: Mail, title: "Anti-Phishing", desc: "Email, SMS, fake site detection." },
-                { Icon: GraduationCap, title: "Student-First", desc: "Designed for 14–18 year olds." },
+                { Icon: GraduationCap, title: "Student-First", desc: "Built for Nigerian secondary school students." },
               ].map((f) => (
                 <div key={f.title} className="hover-lift rounded-2xl border border-border bg-card p-5 shadow-card">
                   <f.Icon className="mb-3 h-6 w-6 text-primary" />
@@ -162,8 +159,8 @@ function Home() {
               <img src={outreach} alt="Community outreach" className="aspect-square rounded-3xl object-cover shadow-card hover-lift" loading="lazy" width={1280} height={896} />
             </div>
             <div className="absolute -bottom-6 -left-6 hidden rounded-2xl bg-gradient-cyber p-5 text-white shadow-glow md:block">
-              <div className="text-3xl font-bold">48</div>
-              <div className="text-xs uppercase tracking-wider opacity-90">Schools / year</div>
+              <div className="text-3xl font-bold">3,900</div>
+              <div className="text-xs uppercase tracking-wider opacity-90">Students / year</div>
             </div>
           </div>
         </div>

@@ -24,18 +24,19 @@ export const Route = createFileRoute("/_authenticated/admin")({
   component: Admin,
 });
 
-type Counts = { volunteers: number; sponsors: number; partnerships: number; contacts: number; schools: number; gallery: number };
+type Counts = { volunteers: number; sponsors: number; partnerships: number; support: number; contacts: number; schools: number; gallery: number };
 type Row = Record<string, any>;
-type TableName = "volunteers" | "sponsors" | "partnership_requests";
+type TableName = "volunteers" | "sponsors" | "partnership_requests" | "support_requests";
 
 function Admin() {
   const { roles } = Route.useRouteContext();
   const canManageRoles = roles.includes("super_admin");
 
-  const [counts, setCounts] = useState<Counts>({ volunteers: 0, sponsors: 0, partnerships: 0, contacts: 0, schools: 0, gallery: 0 });
+  const [counts, setCounts] = useState<Counts>({ volunteers: 0, sponsors: 0, partnerships: 0, support: 0, contacts: 0, schools: 0, gallery: 0 });
   const [vols, setVols] = useState<Row[]>([]);
   const [sponsors, setSponsors] = useState<Row[]>([]);
   const [partnerships, setPartnerships] = useState<Row[]>([]);
+  const [support, setSupport] = useState<Row[]>([]);
   const [busy, setBusy] = useState<string | null>(null);
 
   const refresh = useCallback(() => {
@@ -43,18 +44,20 @@ function Admin() {
       supabase.from("volunteers").select("id", { count: "exact", head: true }),
       supabase.from("sponsors").select("id", { count: "exact", head: true }),
       supabase.from("partnership_requests").select("id", { count: "exact", head: true }),
+      supabase.from("support_requests").select("id", { count: "exact", head: true }),
       supabase.from("contact_messages").select("id", { count: "exact", head: true }),
       supabase.from("schools").select("id", { count: "exact", head: true }),
       supabase.from("gallery_media").select("id", { count: "exact", head: true }),
-    ]).then(([v, s, p, c, sc, g]) => {
+    ]).then(([v, s, p, sr, c, sc, g]) => {
       setCounts({
         volunteers: v.count || 0, sponsors: s.count || 0, partnerships: p.count || 0,
-        contacts: c.count || 0, schools: sc.count || 0, gallery: g.count || 0,
+        support: sr.count || 0, contacts: c.count || 0, schools: sc.count || 0, gallery: g.count || 0,
       });
     });
     supabase.from("volunteers").select("id,full_name,email,occupation,status,created_at").order("created_at", { ascending: false }).limit(10).then(({ data }) => setVols(data || []));
     supabase.from("sponsors").select("id,organization_name,contact_person,category,amount,status,created_at").order("created_at", { ascending: false }).limit(10).then(({ data }) => setSponsors(data || []));
     supabase.from("partnership_requests").select("id,organization_name,contact_person,partnership_type,status,created_at").order("created_at", { ascending: false }).limit(10).then(({ data }) => setPartnerships(data || []));
+    supabase.from("support_requests").select("id,full_name,email,phone,organization_name,support_type,request_type,amount,status,created_at").order("created_at", { ascending: false }).limit(20).then(({ data }) => setSupport(data || []));
   }, []);
 
   useEffect(() => { refresh(); }, [refresh]);
@@ -70,8 +73,9 @@ function Admin() {
 
   const tiles = [
     { Icon: Users, label: "Volunteers", value: counts.volunteers },
-    { Icon: HeartHandshake, label: "Sponsors", value: counts.sponsors },
-    { Icon: Building2, label: "Partnerships", value: counts.partnerships },
+    { Icon: HeartHandshake, label: "Sponsorship & Partnership", value: counts.support },
+    { Icon: HeartHandshake, label: "Legacy Sponsors", value: counts.sponsors },
+    { Icon: Building2, label: "Legacy Partnerships", value: counts.partnerships },
     { Icon: Mail, label: "Messages", value: counts.contacts },
     { Icon: BookOpen, label: "Schools", value: counts.schools },
     { Icon: ImageIcon, label: "Gallery items", value: counts.gallery },
@@ -93,7 +97,7 @@ function Admin() {
 
         <TabsContent value="overview" className="space-y-6 mt-6">
           <FundingProgress />
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-6">
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-7">
             {tiles.map((t) => (
               <div key={t.label} className="hover-lift rounded-2xl border border-border bg-card p-5 shadow-card">
                 <t.Icon className="mb-2 h-6 w-6 text-primary" />
@@ -105,6 +109,22 @@ function Admin() {
         </TabsContent>
 
         <TabsContent value="submissions" className="mt-6 grid gap-6">
+          <ReviewSection
+            title="Sponsorship & Partnership requests"
+            head={["Name", "Contact", "Type", "Support", "Organization", "Amount", "Status", "Actions"]}
+            rows={support}
+            renderCells={(r) => [
+              r.full_name,
+              `${r.email}${r.phone ? " · " + r.phone : ""}`,
+              r.request_type,
+              r.support_type,
+              r.organization_name || "—",
+              r.amount ? `₦${Number(r.amount).toLocaleString()}` : "—",
+            ]}
+            table="support_requests"
+            busy={busy}
+            onAction={updateStatus}
+          />
           <ReviewSection
             title="Volunteer applications"
             head={["Name", "Email", "Role", "Status", "Actions"]}

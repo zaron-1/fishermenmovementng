@@ -8,6 +8,11 @@ import solex from "@/assets/pioneer-solex.png.asset.json";
 
 const PIONEERS = [
   {
+    name: "Solex Innocent",
+    bio: "Cyber-security pentesting student at RAD5 Tech Hub.",
+    image: solex.url,
+  },
+  {
     name: "Jah'swill David",
     bio: "Cyber-security pentesting student, RAD5 Tech Hub | Web Developer.",
     image: jahawill.url,
@@ -36,11 +41,6 @@ const PIONEERS = [
     name: "Edward Chidubem",
     bio: "Cyber-security student at RAD5 Tech Hub.",
     image: edward.url,
-  },
-  {
-    name: "Solex Innocent",
-    bio: "Cyber-security pentesting student at RAD5 Tech Hub.",
-    image: solex.url,
   },
 ];
 

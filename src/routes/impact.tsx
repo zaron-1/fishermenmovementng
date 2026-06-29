@@ -7,31 +7,36 @@ export const Route = createFileRoute("/impact")({
   head: () => ({
     meta: [
       { title: "Project Impact — Fishermen Movement" },
-      { name: "description", content: "Reaching 1 school per week, 48 schools per year, and 4,800–9,600 students annually across Abia State." },
+      { name: "description", content: "Reaching 75 students weekly, 300 monthly, and 3,900 students annually across Abia State." },
       { property: "og:title", content: "Impact — Fishermen Movement" },
     ],
   }),
   component: Impact,
 });
 
+const WEEKLY = 75;
+const MONTHLY = WEEKLY * 4; // 300
+const QUARTERLY = MONTHLY * 3; // 900
+const ANNUAL = 3900;
+
 const cadence = [
-  { Icon: Calendar, value: 1, label: "School per week" },
-  { Icon: CalendarDays, value: 4, label: "Schools per month" },
-  { Icon: CalendarRange, value: 12, label: "Schools per quarter" },
-  { Icon: Users, value: 48, label: "Schools per year" },
+  { Icon: Calendar, value: WEEKLY, label: "Students per week" },
+  { Icon: CalendarDays, value: MONTHLY, label: "Students per month" },
+  { Icon: CalendarRange, value: QUARTERLY, label: "Students per quarter" },
+  { Icon: Users, value: ANNUAL, label: "Students per year" },
 ];
 
-const projection = Array.from({ length: 12 }, (_, i) => ({
-  month: ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"][i],
-  schools: (i + 1) * 4,
-  students: (i + 1) * 4 * 150,
+const MONTHS = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+const projection = MONTHS.map((m, i) => ({
+  month: m,
+  students: Math.round(((i + 1) / 12) * ANNUAL),
 }));
 
 const breakdown = [
-  { quarter: "Q1", min: 1200, max: 2400 },
-  { quarter: "Q2", min: 1200, max: 2400 },
-  { quarter: "Q3", min: 1200, max: 2400 },
-  { quarter: "Q4", min: 1200, max: 2400 },
+  { quarter: "Q1", students: QUARTERLY },
+  { quarter: "Q2", students: QUARTERLY },
+  { quarter: "Q3", students: QUARTERLY },
+  { quarter: "Q4", students: ANNUAL - QUARTERLY * 3 },
 ];
 
 function Impact() {
@@ -67,7 +72,7 @@ function Impact() {
           <div className="rounded-[calc(1.5rem-4px)] bg-card p-8 text-center">
             <div className="text-xs font-semibold uppercase tracking-widest text-primary">Estimated Annual Reach</div>
             <div className="mt-2 font-display text-5xl font-bold sm:text-6xl">
-              <AnimatedCounter value={4800} />–<AnimatedCounter value={9600} /> Students
+              <AnimatedCounter value={ANNUAL} /> Students
             </div>
             <p className="mt-2 text-muted-foreground">Reached every single year across Abia State secondary schools.</p>
           </div>
@@ -98,7 +103,7 @@ function Impact() {
           </div>
 
           <div className="rounded-3xl border border-border bg-card p-6 shadow-card">
-            <h3 className="font-display text-lg font-bold">Quarterly student reach (min–max)</h3>
+            <h3 className="font-display text-lg font-bold">Quarterly student reach</h3>
             <div className="mt-6 h-72">
               <ResponsiveContainer>
                 <BarChart data={breakdown}>
@@ -106,8 +111,7 @@ function Impact() {
                   <XAxis dataKey="quarter" tick={{ fontSize: 12 }} />
                   <YAxis tick={{ fontSize: 12 }} />
                   <Tooltip />
-                  <Bar dataKey="min" fill="oklch(0.42 0.18 254)" radius={[8,8,0,0]} />
-                  <Bar dataKey="max" fill="oklch(0.65 0.2 175)" radius={[8,8,0,0]} />
+                  <Bar dataKey="students" fill="oklch(0.42 0.18 254)" radius={[8,8,0,0]} />
                 </BarChart>
               </ResponsiveContainer>
             </div>

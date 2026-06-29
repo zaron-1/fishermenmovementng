@@ -427,6 +427,51 @@ export type Database = {
         }
         Relationships: []
       }
+      support_requests: {
+        Row: {
+          amount: number | null
+          created_at: string
+          email: string
+          full_name: string
+          id: string
+          message: string | null
+          organization_name: string | null
+          phone: string
+          request_type: Database["public"]["Enums"]["support_request_type"]
+          status: Database["public"]["Enums"]["application_status"]
+          support_type: Database["public"]["Enums"]["support_type"]
+          updated_at: string
+        }
+        Insert: {
+          amount?: number | null
+          created_at?: string
+          email: string
+          full_name: string
+          id?: string
+          message?: string | null
+          organization_name?: string | null
+          phone: string
+          request_type: Database["public"]["Enums"]["support_request_type"]
+          status?: Database["public"]["Enums"]["application_status"]
+          support_type: Database["public"]["Enums"]["support_type"]
+          updated_at?: string
+        }
+        Update: {
+          amount?: number | null
+          created_at?: string
+          email?: string
+          full_name?: string
+          id?: string
+          message?: string | null
+          organization_name?: string | null
+          phone?: string
+          request_type?: Database["public"]["Enums"]["support_request_type"]
+          status?: Database["public"]["Enums"]["application_status"]
+          support_type?: Database["public"]["Enums"]["support_type"]
+          updated_at?: string
+        }
+        Relationships: []
+      }
       user_roles: {
         Row: {
           created_at: string
@@ -569,6 +614,8 @@ export type Database = {
         | "educational"
         | "technology"
       sponsor_category: "platinum" | "gold" | "silver" | "bronze" | "community"
+      support_request_type: "sponsorship" | "partnership"
+      support_type: "personal" | "organizational"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -721,6 +768,8 @@ export const Constants = {
         "technology",
       ],
       sponsor_category: ["platinum", "gold", "silver", "bronze", "community"],
+      support_request_type: ["sponsorship", "partnership"],
+      support_type: ["personal", "organizational"],
     },
   },
 } as const
