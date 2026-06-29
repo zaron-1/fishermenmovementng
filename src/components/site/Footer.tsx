@@ -51,8 +51,7 @@ export function Footer() {
             <h4 className="mb-4 text-sm font-semibold uppercase tracking-wider">Get involved</h4>
             <ul className="space-y-2 text-sm text-background/70">
               <li><Link to="/volunteer" className="hover:text-background">Volunteer</Link></li>
-              <li><Link to="/sponsor" className="hover:text-background">Sponsor</Link></li>
-              <li><Link to="/partner" className="hover:text-background">Partner</Link></li>
+              <li><Link to="/sponsor" className="hover:text-background">Sponsorship & Partnership</Link></li>
               <li><Link to="/donate" className="hover:text-background">Donate</Link></li>
             </ul>
             <div className="mt-6 space-y-2 text-xs text-background/70">
