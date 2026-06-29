@@ -159,8 +159,8 @@ function Home() {
               <img src={outreach} alt="Community outreach" className="aspect-square rounded-3xl object-cover shadow-card hover-lift" loading="lazy" width={1280} height={896} />
             </div>
             <div className="absolute -bottom-6 -left-6 hidden rounded-2xl bg-gradient-cyber p-5 text-white shadow-glow md:block">
-              <div className="text-3xl font-bold">48</div>
-              <div className="text-xs uppercase tracking-wider opacity-90">Schools / year</div>
+              <div className="text-3xl font-bold">3,900</div>
+              <div className="text-xs uppercase tracking-wider opacity-90">Students / year</div>
             </div>
           </div>
         </div>
