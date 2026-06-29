@@ -44,18 +44,20 @@ function Admin() {
       supabase.from("volunteers").select("id", { count: "exact", head: true }),
       supabase.from("sponsors").select("id", { count: "exact", head: true }),
       supabase.from("partnership_requests").select("id", { count: "exact", head: true }),
+      supabase.from("support_requests").select("id", { count: "exact", head: true }),
       supabase.from("contact_messages").select("id", { count: "exact", head: true }),
       supabase.from("schools").select("id", { count: "exact", head: true }),
       supabase.from("gallery_media").select("id", { count: "exact", head: true }),
-    ]).then(([v, s, p, c, sc, g]) => {
+    ]).then(([v, s, p, sr, c, sc, g]) => {
       setCounts({
         volunteers: v.count || 0, sponsors: s.count || 0, partnerships: p.count || 0,
-        contacts: c.count || 0, schools: sc.count || 0, gallery: g.count || 0,
+        support: sr.count || 0, contacts: c.count || 0, schools: sc.count || 0, gallery: g.count || 0,
       });
     });
     supabase.from("volunteers").select("id,full_name,email,occupation,status,created_at").order("created_at", { ascending: false }).limit(10).then(({ data }) => setVols(data || []));
     supabase.from("sponsors").select("id,organization_name,contact_person,category,amount,status,created_at").order("created_at", { ascending: false }).limit(10).then(({ data }) => setSponsors(data || []));
     supabase.from("partnership_requests").select("id,organization_name,contact_person,partnership_type,status,created_at").order("created_at", { ascending: false }).limit(10).then(({ data }) => setPartnerships(data || []));
+    supabase.from("support_requests").select("id,full_name,email,phone,organization_name,support_type,request_type,amount,status,created_at").order("created_at", { ascending: false }).limit(20).then(({ data }) => setSupport(data || []));
   }, []);
 
   useEffect(() => { refresh(); }, [refresh]);
@@ -71,8 +73,9 @@ function Admin() {
 
   const tiles = [
     { Icon: Users, label: "Volunteers", value: counts.volunteers },
-    { Icon: HeartHandshake, label: "Sponsors", value: counts.sponsors },
-    { Icon: Building2, label: "Partnerships", value: counts.partnerships },
+    { Icon: HeartHandshake, label: "Sponsorship & Partnership", value: counts.support },
+    { Icon: HeartHandshake, label: "Legacy Sponsors", value: counts.sponsors },
+    { Icon: Building2, label: "Legacy Partnerships", value: counts.partnerships },
     { Icon: Mail, label: "Messages", value: counts.contacts },
     { Icon: BookOpen, label: "Schools", value: counts.schools },
     { Icon: ImageIcon, label: "Gallery items", value: counts.gallery },
