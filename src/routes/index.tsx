@@ -83,10 +83,7 @@ function Home() {
                 <Link to="/volunteer"><Users className="mr-2 h-5 w-5" />Become a Volunteer</Link>
               </Button>
               <Button asChild size="lg" variant="outline" className="border-white/30 bg-white/10 text-white backdrop-blur-md hover:bg-white/20 hover:text-white">
-                <Link to="/sponsor"><HeartHandshake className="mr-2 h-5 w-5" />Become a Sponsor</Link>
-              </Button>
-              <Button asChild size="lg" variant="outline" className="border-white/30 bg-white/10 text-white backdrop-blur-md hover:bg-white/20 hover:text-white">
-                <Link to="/partner"><Building2 className="mr-2 h-5 w-5" />Partner With Us</Link>
+                <Link to="/sponsor"><HeartHandshake className="mr-2 h-5 w-5" />Sponsorship & Partnership</Link>
               </Button>
             </div>
           </div>
