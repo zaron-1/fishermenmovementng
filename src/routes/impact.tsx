@@ -103,7 +103,7 @@ function Impact() {
           </div>
 
           <div className="rounded-3xl border border-border bg-card p-6 shadow-card">
-            <h3 className="font-display text-lg font-bold">Quarterly student reach (min–max)</h3>
+            <h3 className="font-display text-lg font-bold">Quarterly student reach</h3>
             <div className="mt-6 h-72">
               <ResponsiveContainer>
                 <BarChart data={breakdown}>
@@ -111,8 +111,7 @@ function Impact() {
                   <XAxis dataKey="quarter" tick={{ fontSize: 12 }} />
                   <YAxis tick={{ fontSize: 12 }} />
                   <Tooltip />
-                  <Bar dataKey="min" fill="oklch(0.42 0.18 254)" radius={[8,8,0,0]} />
-                  <Bar dataKey="max" fill="oklch(0.65 0.2 175)" radius={[8,8,0,0]} />
+                  <Bar dataKey="students" fill="oklch(0.42 0.18 254)" radius={[8,8,0,0]} />
                 </BarChart>
               </ResponsiveContainer>
             </div>
