@@ -138,7 +138,7 @@ function Home() {
                 { Icon: Lock, title: "Online Safety", desc: "Privacy, passwords, digital footprint." },
                 { Icon: ShieldAlert, title: "Cybercrime Prevention", desc: "Scams, social engineering, ethics." },
                 { Icon: Mail, title: "Anti-Phishing", desc: "Email, SMS, fake site detection." },
-                { Icon: GraduationCap, title: "Student-First", desc: "Designed for 14–18 year olds." },
+                { Icon: GraduationCap, title: "Student-First", desc: "Built for Nigerian secondary school students." },
               ].map((f) => (
                 <div key={f.title} className="hover-lift rounded-2xl border border-border bg-card p-5 shadow-card">
                   <f.Icon className="mb-3 h-6 w-6 text-primary" />
