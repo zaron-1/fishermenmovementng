@@ -97,7 +97,7 @@ function Admin() {
 
         <TabsContent value="overview" className="space-y-6 mt-6">
           <FundingProgress />
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-6">
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-7">
             {tiles.map((t) => (
               <div key={t.label} className="hover-lift rounded-2xl border border-border bg-card p-5 shadow-card">
                 <t.Icon className="mb-2 h-6 w-6 text-primary" />
