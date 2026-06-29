@@ -5,7 +5,9 @@ import { Button } from "@/components/ui/button";
 import { NAV_LINKS, SITE } from "@/lib/site";
 import { supabase } from "@/integrations/supabase/client";
 import logoAsset from "@/assets/fishermen-logo.png.asset.json";
+import rad5LogoAsset from "@/assets/rad5-logo.png.asset.json";
 const logo = logoAsset.url;
+const rad5Logo = rad5LogoAsset.url;
 
 export function Header() {
   const [open, setOpen] = useState(false);
