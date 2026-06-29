@@ -32,10 +32,11 @@ function Admin() {
   const { roles } = Route.useRouteContext();
   const canManageRoles = roles.includes("super_admin");
 
-  const [counts, setCounts] = useState<Counts>({ volunteers: 0, sponsors: 0, partnerships: 0, contacts: 0, schools: 0, gallery: 0 });
+  const [counts, setCounts] = useState<Counts>({ volunteers: 0, sponsors: 0, partnerships: 0, support: 0, contacts: 0, schools: 0, gallery: 0 });
   const [vols, setVols] = useState<Row[]>([]);
   const [sponsors, setSponsors] = useState<Row[]>([]);
   const [partnerships, setPartnerships] = useState<Row[]>([]);
+  const [support, setSupport] = useState<Row[]>([]);
   const [busy, setBusy] = useState<string | null>(null);
 
   const refresh = useCallback(() => {
