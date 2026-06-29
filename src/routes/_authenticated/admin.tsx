@@ -24,9 +24,9 @@ export const Route = createFileRoute("/_authenticated/admin")({
   component: Admin,
 });
 
-type Counts = { volunteers: number; sponsors: number; partnerships: number; contacts: number; schools: number; gallery: number };
+type Counts = { volunteers: number; sponsors: number; partnerships: number; support: number; contacts: number; schools: number; gallery: number };
 type Row = Record<string, any>;
-type TableName = "volunteers" | "sponsors" | "partnership_requests";
+type TableName = "volunteers" | "sponsors" | "partnership_requests" | "support_requests";
 
 function Admin() {
   const { roles } = Route.useRouteContext();
