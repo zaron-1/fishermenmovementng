@@ -10,6 +10,8 @@ import hero from "@/assets/hero-students.jpg";
 import training from "@/assets/training-session.jpg";
 import outreach from "@/assets/community-outreach.jpg";
 import { Pioneers } from "@/components/site/Pioneers";
+import rad5FullLogo from "@/assets/rad5-full-logo.jpeg.asset.json";
+
 
 export const Route = createFileRoute("/")({
   head: () => ({
