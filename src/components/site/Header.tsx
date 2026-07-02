@@ -107,12 +107,13 @@ export function Header() {
             ))}
             <div className="mt-2 flex gap-2 border-t border-border pt-3">
               <Button asChild variant="outline" size="sm" className="flex-1">
-                <Link to="/donate">Donate</Link>
+                <a href="https://rad5.com.ng/" target="_blank" rel="noopener noreferrer">Visit RAD5</a>
               </Button>
               <Button asChild size="sm" className="flex-1 gradient-primary text-primary-foreground">
                 <Link to={hasSession ? "/dashboard" : "/auth"}>{hasSession ? "Dashboard" : "Sign in"}</Link>
               </Button>
             </div>
+
           </div>
         </div>
       )}
