@@ -52,7 +52,7 @@ export function Footer() {
             <ul className="space-y-2 text-sm text-background/70">
               <li><Link to="/volunteer" className="hover:text-background">Volunteer</Link></li>
               <li><Link to="/sponsor" className="hover:text-background">Sponsorship & Partnership</Link></li>
-              <li><Link to="/donate" className="hover:text-background">Donate</Link></li>
+              <li><Link to="/contact" className="hover:text-background">Contact us</Link></li>
             </ul>
             <div className="mt-6 space-y-2 text-xs text-background/70">
               <div className="flex items-center gap-2"><MapPin className="h-3.5 w-3.5" />{SITE.address}</div>
