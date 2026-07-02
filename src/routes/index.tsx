@@ -10,6 +10,8 @@ import hero from "@/assets/hero-students.jpg";
 import training from "@/assets/training-session.jpg";
 import outreach from "@/assets/community-outreach.jpg";
 import { Pioneers } from "@/components/site/Pioneers";
+import rad5FullLogo from "@/assets/rad5-full-logo.jpeg.asset.json";
+
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -200,6 +202,43 @@ function Home() {
 
       <Pioneers />
 
+      {/* RAD5 UMBRELLA */}
+      <section className="relative py-20">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+          <div className="mb-8 text-center">
+            <span className="inline-block rounded-full bg-primary/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-primary">
+              Our Umbrella
+            </span>
+            <h2 className="mt-4 font-display text-3xl font-bold sm:text-4xl">
+              Fishermen Movement is an initiative under RAD5
+            </h2>
+            <p className="mx-auto mt-3 max-w-2xl text-muted-foreground">
+              We operate as a community-impact arm of RAD5 Tech Hub — bringing world-class cybersecurity,
+              software engineering, and innovation expertise directly to Nigerian secondary schools.
+            </p>
+          </div>
+
+          <a
+            href="https://rad5.com.ng/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group relative block overflow-hidden rounded-3xl border border-border bg-[#0b0b12] shadow-elegant transition-all hover:-translate-y-1 hover:shadow-glow"
+            aria-label="Visit RAD5 Tech Hub at rad5.com.ng"
+          >
+            <img
+              src={rad5FullLogo.url}
+              alt="RAD5 Tech Hub — Innovation at the Speed of Light"
+              className="mx-auto w-full max-w-4xl object-contain transition-transform duration-500 group-hover:scale-[1.02]"
+            />
+            <div className="flex items-center justify-center gap-2 bg-black/60 py-4 text-sm font-semibold uppercase tracking-widest text-white backdrop-blur">
+              Visit rad5.com.ng
+              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+            </div>
+          </a>
+        </div>
+      </section>
+
+
       {/* CTA */}
       <section className="relative my-24 overflow-hidden">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -211,17 +250,18 @@ function Home() {
               <MapPin className="mx-auto mb-4 h-6 w-6 text-accent" />
               <h2 className="font-display text-3xl font-bold sm:text-5xl">Join the movement.</h2>
               <p className="mx-auto mt-4 max-w-xl text-lg text-white/85">
-                Whether you teach, code, donate, or simply care — there's a place for you in protecting Nigeria's next generation.
+                Whether you teach, code, sponsor, or simply care — there's a place for you in protecting Nigeria's next generation.
               </p>
               <div className="mt-8 flex flex-wrap justify-center gap-3">
                 <Button asChild size="lg" className="bg-white text-primary hover:bg-white/90">
                   <Link to="/volunteer">Volunteer today</Link>
                 </Button>
                 <Button asChild size="lg" variant="outline" className="border-white/40 bg-white/10 text-white hover:bg-white/20 hover:text-white">
-                  <Link to="/donate">Make a donation</Link>
+                  <Link to="/sponsor">Sponsor / Partner</Link>
                 </Button>
               </div>
             </div>
+
           </div>
         </div>
       </section>
