@@ -211,17 +211,18 @@ function Home() {
               <MapPin className="mx-auto mb-4 h-6 w-6 text-accent" />
               <h2 className="font-display text-3xl font-bold sm:text-5xl">Join the movement.</h2>
               <p className="mx-auto mt-4 max-w-xl text-lg text-white/85">
-                Whether you teach, code, donate, or simply care — there's a place for you in protecting Nigeria's next generation.
+                Whether you teach, code, sponsor, or simply care — there's a place for you in protecting Nigeria's next generation.
               </p>
               <div className="mt-8 flex flex-wrap justify-center gap-3">
                 <Button asChild size="lg" className="bg-white text-primary hover:bg-white/90">
                   <Link to="/volunteer">Volunteer today</Link>
                 </Button>
                 <Button asChild size="lg" variant="outline" className="border-white/40 bg-white/10 text-white hover:bg-white/20 hover:text-white">
-                  <Link to="/donate">Make a donation</Link>
+                  <Link to="/sponsor">Sponsor / Partner</Link>
                 </Button>
               </div>
             </div>
+
           </div>
         </div>
       </section>
