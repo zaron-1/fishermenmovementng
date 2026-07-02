@@ -37,17 +37,26 @@ export function Header() {
       }`}
     >
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
-        <Link to="/" className="flex min-w-0 items-center gap-2.5">
-          <img src={logo} alt="Fishermen Movement logo" className="h-9 w-9 shrink-0 object-contain" width={36} height={36} />
-          <div className="hidden min-w-0 sm:block">
-            <div className="truncate font-display text-base font-bold leading-tight text-foreground">{SITE.name}</div>
-            <div className="truncate text-[10px] uppercase tracking-widest text-muted-foreground">Cyber Safety Campaign</div>
-          </div>
-          <div className="ml-1 hidden items-center gap-1.5 border-l border-border/60 pl-2.5 sm:flex" aria-label="In partnership with RAD5 Tech Hub">
-            <span className="hidden text-[9px] font-medium uppercase tracking-widest text-muted-foreground md:inline">In partnership with</span>
+        <div className="flex min-w-0 items-center gap-3">
+          <Link to="/" className="flex min-w-0 items-center gap-2.5">
+            <img src={logo} alt="Fishermen Movement logo" className="h-9 w-9 shrink-0 object-contain" width={36} height={36} />
+            <div className="hidden min-w-0 sm:block">
+              <div className="truncate font-display text-base font-bold leading-tight text-foreground">{SITE.name}</div>
+              <div className="truncate text-[10px] uppercase tracking-widest text-muted-foreground">An initiative under RAD5</div>
+            </div>
+          </Link>
+          <a
+            href="https://rad5.com.ng/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="ml-1 hidden items-center gap-1.5 border-l border-border/60 pl-2.5 transition-opacity hover:opacity-80 sm:flex"
+            aria-label="Visit RAD5 Tech Hub"
+            title="Fishermen Movement is an initiative under RAD5 Tech Hub — visit rad5.com.ng"
+          >
+            <span className="hidden text-[9px] font-medium uppercase tracking-widest text-muted-foreground md:inline">Powered by</span>
             <img src={rad5Logo} alt="RAD5 Tech Hub" className="h-7 w-auto object-contain" width={56} height={28} />
-          </div>
-        </Link>
+          </a>
+        </div>
 
         <nav className="hidden items-center gap-1 lg:flex">
           {NAV_LINKS.map((l) => (
@@ -64,9 +73,6 @@ export function Header() {
         </nav>
 
         <div className="hidden items-center gap-2 lg:flex">
-          <Button asChild variant="ghost" size="sm">
-            <Link to="/donate">Donate</Link>
-          </Button>
           <Button asChild size="sm" className="gradient-primary text-primary-foreground shadow-glow">
             <Link to={hasSession ? "/dashboard" : "/auth"}>
               <Shield className="mr-1.5 h-4 w-4" />
@@ -74,6 +80,7 @@ export function Header() {
             </Link>
           </Button>
         </div>
+
 
         <button
           className="rounded-md p-2 lg:hidden"
