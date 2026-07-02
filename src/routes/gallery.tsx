@@ -6,11 +6,11 @@ import { ImageOff } from "lucide-react";
 import training from "@/assets/training-session.jpg";
 import outreach from "@/assets/community-outreach.jpg";
 import hero from "@/assets/hero-students.jpg";
-import onitshaLab from "@/assets/gallery-onitsha-lab.jpg.asset.json";
-import literacyClub from "@/assets/gallery-literacy-club.jpg.asset.json";
 
 import cyberLab from "@/assets/gallery-cyber-lab.jpg.asset.json";
 import studentCoding from "@/assets/gallery-student-coding.jpg.asset.json";
+import rad5AbiaStartup from "@/assets/gallery-rad5-abia-startup.jpg.asset.json";
+import rad5Team from "@/assets/gallery-rad5-team.jpg.asset.json";
 
 export const Route = createFileRoute("/gallery")({
   head: () => ({
@@ -26,16 +26,16 @@ export const Route = createFileRoute("/gallery")({
 type Item = { id: string; title: string | null; caption: string | null; category: string; media_url: string };
 
 const fallback: Item[] = [
-  { id: "a1", title: "Computer lab session", caption: "Students engaged in classroom ICT learning", category: "school_visits", media_url: onitshaLab.url },
-  { id: "a2", title: "Digital Literacy Club", caption: "Peer learning during a club meeting", category: "training_sessions", media_url: literacyClub.url },
-  
+  { id: "r1", title: "RAD5 team with the Abia State Commissioner for Science, Technology & Innovation", caption: "At the Abia Startup Round Table — showcasing tech ecosystem partnerships driving digital literacy across the state.", category: "community_engagement", media_url: rad5AbiaStartup.url },
+  { id: "r2", title: "RAD5 delegation at Abia Startup Round Table", caption: "Fishermen Movement pioneers representing RAD5 Tech Hub at a state-level innovation gathering.", category: "community_engagement", media_url: rad5Team.url },
   { id: "a4", title: "Cybersecurity training room", caption: "Threat-monitoring environment used during workshops", category: "workshops", media_url: cyberLab.url },
   { id: "a5", title: "Hands-on coding", caption: "Student practicing command-line tools", category: "training_sessions", media_url: studentCoding.url },
-  
+
   { id: "2", title: "Workshop in progress", caption: "Phishing demo with projector", category: "workshops", media_url: training },
   { id: "3", title: "Certificate day", caption: "Graduating cohort in Aba", category: "community_engagement", media_url: outreach },
   { id: "4", title: "Classroom session", caption: "Whiteboard cybersecurity diagrams", category: "school_visits", media_url: hero },
 ];
+
 
 const categories = [
   { value: "all", label: "All" },
