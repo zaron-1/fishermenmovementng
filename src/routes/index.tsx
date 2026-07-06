@@ -47,11 +47,30 @@ function Home() {
     funds_raised: 0,
   });
 
+  const heroSlides = [
+    { src: hero, alt: "Nigerian students learning cybersecurity in an Aba classroom" },
+    { src: training, alt: "Cybersecurity training session in progress" },
+    { src: outreach, alt: "Community outreach with students" },
+    { src: cyberLab.url, alt: "Cybersecurity lab environment" },
+    { src: studentCoding.url, alt: "Student practicing hands-on coding" },
+    { src: rad5AbiaStartup.url, alt: "RAD5 team at Abia Startup Round Table" },
+    { src: rad5Team.url, alt: "RAD5 delegation" },
+  ];
+  const [slideIndex, setSlideIndex] = useState(0);
+
   useEffect(() => {
     supabase.rpc("get_public_stats").then(({ data }) => {
       if (data) setStats(data as Stats);
     });
   }, []);
+
+  useEffect(() => {
+    const id = setInterval(() => {
+      setSlideIndex((i) => (i + 1) % heroSlides.length);
+    }, 4000);
+    return () => clearInterval(id);
+  }, [heroSlides.length]);
+
 
   return (
     <div className="overflow-hidden">
