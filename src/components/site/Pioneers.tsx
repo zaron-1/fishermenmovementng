@@ -6,7 +6,7 @@ import amarachi from "@/assets/pioneer-amarachi.png.asset.json";
 import edward from "@/assets/pioneer-edward.png.asset.json";
 import solex from "@/assets/pioneer-solex.png.asset.json";
 
-const PIONEERS = [
+const PIONEERS: { name: string; bio: string; image: string; linkedin?: string }[] = [
   {
     name: "Solex Innocent",
     bio: "Cyber-security pentesting student at RAD5 Tech Hub.",
@@ -16,6 +16,7 @@ const PIONEERS = [
     name: "Jah'swill David",
     bio: "Cyber-security pentesting student, RAD5 Tech Hub | Web Developer.",
     image: jahawill.url,
+    linkedin: "https://www.linkedin.com/in/ikoh-jahswill?utm_source=share_via&utm_content=profile&utm_medium=member_android",
   },
   {
     name: "Ernest Chidi",
