@@ -9,8 +9,13 @@ import hero from "@/assets/hero-students.jpg";
 
 import training from "@/assets/training-session.jpg";
 import outreach from "@/assets/community-outreach.jpg";
+import cyberLab from "@/assets/gallery-cyber-lab.jpg.asset.json";
+import studentCoding from "@/assets/gallery-student-coding.jpg.asset.json";
+import rad5AbiaStartup from "@/assets/gallery-rad5-abia-startup.jpg.asset.json";
+import rad5Team from "@/assets/gallery-rad5-team.jpg.asset.json";
 import { Pioneers } from "@/components/site/Pioneers";
 import rad5FullLogo from "@/assets/rad5-full-logo.jpeg.asset.json";
+
 
 
 export const Route = createFileRoute("/")({
