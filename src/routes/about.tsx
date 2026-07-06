@@ -160,7 +160,7 @@ const sections: Section[] = [
     Icon: CalendarClock,
     title: "Project Implementation Plan",
     body:
-      "Pilot Phase: Late June – July 2026.\n\n" +
+      "Pilot Phase: Mid–Late September to Late October 2026 (one-month milestone).\n\n" +
       "Frequency: One school per week.\n" +
       "Session duration: 30–45 minutes.\n" +
       "Coverage: 4 schools during the pilot phase.\n" +

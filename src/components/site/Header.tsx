@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { NAV_LINKS, SITE } from "@/lib/site";
 import { supabase } from "@/integrations/supabase/client";
 import logoAsset from "@/assets/fishermen-logo.png.asset.json";
-import rad5LogoAsset from "@/assets/rad5-logo.png.asset.json";
+import rad5LogoAsset from "@/assets/rad5-full-logo.jpeg.asset.json";
 const logo = logoAsset.url;
 const rad5Logo = rad5LogoAsset.url;
 
@@ -54,7 +54,7 @@ export function Header() {
             title="Fishermen Movement is an initiative under RAD5 Tech Hub — visit rad5.com.ng"
           >
             <span className="hidden text-[9px] font-medium uppercase tracking-widest text-muted-foreground md:inline">Powered by</span>
-            <img src={rad5Logo} alt="RAD5 Tech Hub" className="h-7 w-auto object-contain" width={56} height={28} />
+            <img src={rad5Logo} alt="RAD5 Tech Hub" className="h-8 w-auto rounded-sm bg-white object-contain p-0.5" width={72} height={32} />
           </a>
         </div>
 
