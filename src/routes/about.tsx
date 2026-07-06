@@ -322,7 +322,7 @@ const sections: Section[] = [
 ];
 
 const meta = [
-  { Icon: CalendarClock, label: "Proposed Start", value: "Late June 2026" },
+  { Icon: CalendarClock, label: "Proposed Start", value: "September 2026" },
   { Icon: MapPin, label: "Location", value: "Aba, Abia State, Nigeria" },
   { Icon: GraduationCap, label: "Pilot Duration", value: "1 Month — 4 Schools" },
   { Icon: Users, label: "Pilot Reach", value: "200–400 Students (SS1–SS3)" },
@@ -343,7 +343,7 @@ function About() {
           </p>
           <p className="mx-auto mt-6 max-w-3xl text-lg text-white/85">
             Implementing Organization: <strong>Fishermen Movement</strong>. A pilot programme reaching SS1–SS3
-            students with practical cybersecurity education, beginning late June 2026.
+            students with practical cybersecurity education, beginning September 2026.
           </p>
 
           <div className="mx-auto mt-10 grid max-w-3xl grid-cols-2 gap-3 sm:grid-cols-4">
