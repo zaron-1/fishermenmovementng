@@ -77,16 +77,21 @@ function Home() {
       {/* HERO */}
       <section className="relative isolate min-h-[88vh] overflow-hidden">
         <div className="absolute inset-0 -z-10">
-          <img
-            src={hero}
-            alt="Nigerian students learning cybersecurity in an Aba classroom"
-            className="h-full w-full object-cover"
-            width={1920}
-            height={1080}
-          />
-          <div className="absolute inset-0 gradient-hero opacity-90" />
-          <div className="absolute inset-0 grid-pattern opacity-40" />
+          {heroSlides.map((s, i) => (
+            <img
+              key={s.src}
+              src={s.src}
+              alt={s.alt}
+              className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-1000 ${i === slideIndex ? "opacity-100" : "opacity-0"}`}
+              width={1920}
+              height={1080}
+              loading={i === 0 ? "eager" : "lazy"}
+            />
+          ))}
+          <div className="absolute inset-0 gradient-hero opacity-60" />
+          <div className="absolute inset-0 grid-pattern opacity-30" />
         </div>
+
 
         <div className="relative mx-auto flex min-h-[88vh] max-w-7xl flex-col justify-center px-4 py-24 sm:px-6 lg:px-8">
           <div className="max-w-3xl animate-fade-up">
