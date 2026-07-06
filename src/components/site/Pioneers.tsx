@@ -62,25 +62,37 @@ export function Pioneers() {
         </div>
 
         <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-          {PIONEERS.map((p) => (
-            <div
-              key={p.name}
-              className="group rounded-3xl border border-border bg-card p-6 text-center shadow-card transition-all hover:-translate-y-2 hover:shadow-elegant"
-            >
-              <div className="mx-auto mb-5 h-40 w-40 overflow-hidden rounded-full ring-4 ring-primary/20 transition-all group-hover:ring-primary/40">
-                <img
-                  src={p.image}
-                  alt={`${p.name} — Fishermen Movement pioneer`}
-                  className="h-full w-full object-cover"
-                  loading="lazy"
-                  width={320}
-                  height={320}
-                />
-              </div>
-              <h3 className="font-display text-xl font-bold">{p.name}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{p.bio}</p>
-            </div>
-          ))}
+          {PIONEERS.map((p) => {
+            const Wrapper: any = p.linkedin ? "a" : "div";
+            const wrapperProps = p.linkedin
+              ? { href: p.linkedin, target: "_blank", rel: "noopener noreferrer", "aria-label": `${p.name} on LinkedIn` }
+              : {};
+            return (
+              <Wrapper
+                key={p.name}
+                {...wrapperProps}
+                className="group block rounded-3xl border border-border bg-card p-6 text-center shadow-card transition-all hover:-translate-y-2 hover:shadow-elegant"
+              >
+                <div className="mx-auto mb-5 h-40 w-40 overflow-hidden rounded-full ring-4 ring-primary/20 transition-all group-hover:ring-primary/40">
+                  <img
+                    src={p.image}
+                    alt={`${p.name} — Fishermen Movement pioneer`}
+                    className="h-full w-full object-cover"
+                    loading="lazy"
+                    width={320}
+                    height={320}
+                  />
+                </div>
+                <h3 className="font-display text-xl font-bold">{p.name}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{p.bio}</p>
+                {p.linkedin && (
+                  <span className="mt-3 inline-block text-xs font-semibold uppercase tracking-widest text-primary">
+                    View LinkedIn →
+                  </span>
+                )}
+              </Wrapper>
+            );
+          })}
         </div>
       </div>
     </section>
