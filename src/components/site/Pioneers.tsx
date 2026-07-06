@@ -11,6 +11,7 @@ const PIONEERS: { name: string; bio: string; image: string; linkedin?: string }[
     name: "Solex Innocent",
     bio: "Cyber-security pentesting student at RAD5 Tech Hub.",
     image: solex.url,
+    linkedin: "https://www.linkedin.com/in/solex-innocent-0526953b9?utm_source=share_via&utm_content=profile&utm_medium=member_android",
   },
   {
     name: "Jah'swill David",
@@ -22,12 +23,15 @@ const PIONEERS: { name: string; bio: string; image: string; linkedin?: string }[
     name: "Ernest Chidi",
     bio: "Cyber-security pentesting student, RAD5 Tech Hub | Web Developer.",
     image: ernest.url,
+    linkedin: "https://www.linkedin.com/in/chidi-ernest-4bb323310?utm_source=share_via&utm_content=profile&utm_medium=member_android",
   },
   {
     name: "Parsley Osimakwe",
     bio: "Cyber Security Intern at RAD5 Tech Hub | Mobile App Developer.",
     image: parsley.url,
+    linkedin: "https://www.linkedin.com/in/parsley-osimakwe-60a141345?utm_source=share_via&utm_content=profile&utm_medium=member_android",
   },
+
   {
     name: "Kinsley Prince",
     bio: "Cyber Security Intern at RAD5 Tech Hub.",
