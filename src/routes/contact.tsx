@@ -84,16 +84,20 @@ function Contact() {
 
           <div className="space-y-4">
             {[
-              { Icon: MapPin, label: "Office", value: SITE.address },
-              { Icon: Mail, label: "Email", value: SITE.email },
-              { Icon: Phone, label: "Phone", value: `${SITE.phone} / ${SITE.phoneAlt}` },
+              { Icon: MapPin, label: "Office", value: SITE.address, href: null },
+              { Icon: Mail, label: "Email", value: SITE.email, href: `https://mail.google.com/mail/?view=cm&to=${encodeURIComponent(SITE.email)}` },
+              { Icon: Phone, label: "Phone", value: `${SITE.phone} / ${SITE.phoneAlt}`, href: null },
             ].map((c) => (
               <div key={c.label} className="hover-lift rounded-2xl border border-border bg-card p-6 shadow-card">
                 <div className="mb-3 inline-flex h-10 w-10 items-center justify-center rounded-xl gradient-primary text-primary-foreground">
                   <c.Icon className="h-5 w-5" />
                 </div>
                 <div className="text-xs uppercase tracking-widest text-muted-foreground">{c.label}</div>
-                <div className="mt-1 font-medium">{c.value}</div>
+                {c.href ? (
+                  <a href={c.href} target="_blank" rel="noopener noreferrer" className="mt-1 block font-medium hover:text-primary">{c.value}</a>
+                ) : (
+                  <div className="mt-1 font-medium">{c.value}</div>
+                )}
               </div>
             ))}
           </div>

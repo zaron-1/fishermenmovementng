@@ -415,7 +415,7 @@ function About() {
           </p>
           <div className="mt-6 inline-flex items-center gap-2 rounded-full bg-white/10 px-5 py-2 text-sm backdrop-blur-md">
             <Mail className="h-4 w-4 text-accent" />
-            <span>fishermenmovement@gmail.com</span>
+            <a href="https://mail.google.com/mail/?view=cm&to=fishermenmovement@gmail.com" target="_blank" rel="noopener noreferrer" className="hover:underline">fishermenmovement@gmail.com</a>
           </div>
         </div>
       </section>
