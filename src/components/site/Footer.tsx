@@ -63,7 +63,7 @@ export function Footer() {
             </ul>
             <div className="mt-6 space-y-2 text-xs text-background/70">
               <div className="flex items-center gap-2"><MapPin className="h-3.5 w-3.5" />{SITE.address}</div>
-              <div className="flex items-center gap-2"><Mail className="h-3.5 w-3.5" />{SITE.email}</div>
+              <a href={`https://mail.google.com/mail/?view=cm&to=${encodeURIComponent(SITE.email)}`} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-background"><Mail className="h-3.5 w-3.5" />{SITE.email}</a>
               <div className="flex items-center gap-2"><Phone className="h-3.5 w-3.5" />{SITE.phone}</div>
             </div>
           </div>

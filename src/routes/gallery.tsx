@@ -27,7 +27,7 @@ type Item = { id: string; title: string | null; caption: string | null; category
 
 const fallback: Item[] = [
   { id: "r1", title: "RAD5 team with the Abia State Commissioner for Science, Technology & Innovation", caption: "At the Abia Startup Round Table — showcasing tech ecosystem partnerships driving digital literacy across the state.", category: "community_engagement", media_url: rad5AbiaStartup.url },
-  { id: "r2", title: "RAD5 delegation at Abia Startup Round Table", caption: "Fishermen Movement pioneers representing RAD5 Tech Hub at a state-level innovation gathering.", category: "community_engagement", media_url: rad5Team.url },
+  { id: "r2", title: "RAD5 delegation at Abia Startup Round Table", caption: "Captured immediately after the Abia Startup Round Table, hosted at RAD5 Tech Hub.", category: "community_engagement", media_url: rad5Team.url },
   { id: "a4", title: "Cybersecurity training room", caption: "Threat-monitoring environment used during workshops", category: "workshops", media_url: cyberLab.url },
   { id: "a5", title: "Hands-on coding", caption: "Student practicing command-line tools", category: "training_sessions", media_url: studentCoding.url },
 
