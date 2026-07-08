@@ -24,12 +24,19 @@ export function Footer() {
             </p>
             <div className="mt-6 flex gap-3">
               {[
-                { Icon: Twitter, href: SITE.social.twitter },
-                { Icon: Facebook, href: SITE.social.facebook },
-                { Icon: Instagram, href: SITE.social.instagram },
-                { Icon: Linkedin, href: SITE.social.linkedin },
-              ].map(({ Icon, href }, i) => (
-                <a key={i} href={href} className="rounded-full bg-background/10 p-2.5 transition-colors hover:bg-primary">
+                { Icon: Twitter, href: SITE.social.twitter, label: "Twitter" },
+                { Icon: Facebook, href: SITE.social.facebook, label: "Facebook" },
+                { Icon: Instagram, href: SITE.social.instagram, label: "Instagram" },
+                { Icon: Linkedin, href: SITE.social.linkedin, label: "LinkedIn" },
+              ].map(({ Icon, href, label }, i) => (
+                <a
+                  key={i}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`Visit Fishermen Movement on ${label}`}
+                  className="rounded-full bg-background/10 p-2.5 transition-colors hover:bg-primary"
+                >
                   <Icon className="h-4 w-4" />
                 </a>
               ))}
