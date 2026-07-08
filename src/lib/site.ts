@@ -9,8 +9,8 @@ export const SITE = {
   social: {
     twitter: "#",
     facebook: "#",
-    instagram: "#",
-    linkedin: "#",
+    instagram: "https://www.instagram.com/fishermenmovementng?igsh=djJobThqczJjZXlo&utm_source=ig_contact_invite",
+    linkedin: "https://www.linkedin.com/company/fishermen-movement/",
   },
 };
 
